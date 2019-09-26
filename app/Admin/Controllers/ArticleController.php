@@ -2,47 +2,86 @@
 
 namespace App\Admin\Controllers;
 
-use Encore\Admin\Facades\Admin;
-use Encore\Admin\Layout\Content;
+use App\Models\article;
+use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
-use App\Models\Article;
-use App\Http\Controllers\Controller;
+use Encore\Admin\Content;
 
-
-
-class ArticleController extends Controller
+class ArticleController extends AdminController
 {
-    public function index()
-    {
-        return Admin::content(function (Content $content) {
+    /**
+     * Title for current resource.
+     *
+     * @var string
+     */
+    protected $title = 'App\Models\article';
 
-            $content->header('文章列表');
-            $content->description('文章列表');
 
-            $content->body($this->grid());
-        });
-    }
-
+    /**
+     * Make a grid builder.
+     *
+     * @return Grid
+     */
     protected function grid()
     {
-        return Admin::grid(Article::class, function (Grid $grid) {
+        $grid = new Grid(new article);
 
-            // 直接通过字段名`username`添加列
-            $grid->title('标题');
-//            // 效果和上面一样
-            $grid->column('add_time','发布时间')->display(function($add_time){
-                return date('Y-m-d H:i:s', $add_time);
-            });
-//            //若需要经过复杂逻辑，可使用display方法修改输出
-//            $grid->gender('性别')->display(function($data){
-//                $result = '';
-//                $result = Article::$genderGroup[$data];
-//                return $result;
-//            });
-//            $grid->mobile_phone('手机');
-//            $grid->address('通讯地址');
+        $grid->column('id', __('Id'));
+        $grid->column('title', __('Title'));
+//        $grid->column('content', __('Content'));
+        $grid->column('author_id', __('Author id'));
+        $grid->column('add_time', __('Add time'))->display(function($add_time){
+            return date('Y-m-d H:i:s', $add_time);
         });
+        $grid->column('read_num', __('Read num'));
+        $grid->column('love_num', __('Love num'));
+        $grid->column('collect_num', __('Collect num'));
+
+        return $grid;
+    }
+
+    /**
+     * Make a show builder.
+     *
+     * @param mixed $id
+     * @return Show
+     */
+    protected function detail($id)
+    {
+
+        $show = new Show(article::findOrFail($id));
+
+        $show->field('id', __('Id'));
+        $show->field('title', __('Title'));
+        $show->field('content', __('Content'));
+        $show->field('author_id', __('Author id'));
+        $show->field('add_time', __('Add time'));
+        $show->field('read_num', __('Read num'));
+        $show->field('love_num', __('Love num'));
+        $show->field('collect_num', __('Collect num'));
+
+        return $show;
+    }
+
+    /**
+     * Make a form builder.
+     *
+     * @return Form
+     */
+    protected function form()
+    {
+        $form = new Form(new article);
+
+        $form->text('title', __('Title'));
+        $form->textarea('content', __('Content'));
+        $form->number('author_id', __('Author id'));
+        $form->number('add_time', __('Add time'));
+        $form->number('read_num', __('Read num'));
+        $form->number('love_num', __('Love num'));
+        $form->number('collect_num', __('Collect num'));
+
+        return $form;
     }
 }
