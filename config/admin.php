@@ -249,7 +249,7 @@ return [
     | Set a default avatar for newly created users.
     |
     */
-    'default_avatar' => '/vendor/laravel-admin/AdminLTE/dist/img/user2-160x160.jpg',
+    'default_avatar' => '/img/admin_avatar.jpg',
 
     /*
     |--------------------------------------------------------------------------
@@ -395,6 +395,18 @@ return [
     |
     */
     'extensions' => [
+        'simplemde' => [
 
+            // Set to false if you want to disable this extension
+            'enable' => true,
+
+            // If you want to set an alias for the calling method
+            //'alias' => 'markdown',
+
+            // Editor configuration
+            'config' => [
+
+            ]
+        ]
     ],
 ];

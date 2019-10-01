@@ -4,7 +4,7 @@ namespace App\Admin\Controllers;
 
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
-use App\Models\article;
+use App\Models\Article;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
@@ -109,10 +109,17 @@ class ArticleController extends Controller
         return Admin::form(article::class, function (Form $form) {
 
             $form->text('title', __('Title'));
-            $form->textarea('content', __('Content'));
+           // $form->textarea('content', __('Content'));
+            $form->simplemde('content');
             $form->number('author_id', __('Author id'));
-            $form->number('add_time', __('Add time'));
+//            $form->datetime('add_time', '发布时间')->with(function($add_time){
+//               return $add_time;
+//            })->disable();
+            $form->display('add_time', '发布时间')->with(function($add_time){
+                return date('Y-m-d H:i:s',$add_time);
+            });
             $form->number('read_num', __('Read num'));
+            $form->multipleSelect('label','标签')->options(config('constants.ARTICLE_TYPE'));
             $form->number('love_num', __('Love num'));
             $form->number('collect_num', __('Collect num'));
         });
