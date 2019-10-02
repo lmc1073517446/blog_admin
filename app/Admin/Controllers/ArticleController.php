@@ -9,6 +9,8 @@ use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
 
 
 class ArticleController extends Controller
@@ -48,7 +50,7 @@ class ArticleController extends Controller
             $content->header('编辑');
             $content->description('编辑');
 
-            $content->body($this->form()->edit($id));
+            $content->body($this->detail($id));
         });
     }
 
@@ -110,7 +112,8 @@ class ArticleController extends Controller
 
             $form->text('title', __('Title'));
            // $form->textarea('content', __('Content'));
-            $form->simplemde('content');
+            //$form->simplemde('content');
+            $form->editormd('content');
             $form->number('author_id', __('Author id'));
 //            $form->datetime('add_time', '发布时间')->with(function($add_time){
 //               return $add_time;
@@ -122,6 +125,12 @@ class ArticleController extends Controller
             $form->multipleSelect('label','标签')->options(config('constants.ARTICLE_TYPE'));
             $form->number('love_num', __('Love num'));
             $form->number('collect_num', __('Collect num'));
+            $form->saved(function (Form $form) {
+
+                $form->model()->id;
+
+            });
         });
     }
+
 }

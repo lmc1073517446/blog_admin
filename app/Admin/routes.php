@@ -11,5 +11,6 @@ Route::group([
 ], function (Router $router) {
 
     $router->get('/', 'HomeController@index')->name('admin.home');
-     $router->resource('articles', ArticleController::class);
+     $router->resource('/articles', 'ArticleController');
+    $router->post('/upload', 'UploadController@index')->name('admin.home');
 });

@@ -62,6 +62,12 @@ return [
             'region' => env('AWS_DEFAULT_REGION'),
             'bucket' => env('AWS_BUCKET'),
         ],
+        'article' => [
+            'driver' => 'local',
+            'root' => public_path('/article'), // public_path 就是public的路径
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
 
     ],
 

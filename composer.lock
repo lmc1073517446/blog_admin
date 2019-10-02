@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "023b999e0575abef1d2c93cd59f78b3e",
+    "content-hash": "2e7184349104923c51fb209321389a48",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -881,6 +881,60 @@
             "time": "2019-07-29T11:03:54+00:00"
         },
         {
+            "name": "laravel-admin-ext/simplemde",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-admin-extensions/simplemde.git",
+                "reference": "49bd152e313b1442c569679d7f5bff6ab0edd80c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-admin-extensions/simplemde/zipball/49bd152e313b1442c569679d7f5bff6ab0edd80c",
+                "reference": "49bd152e313b1442c569679d7f5bff6ab0edd80c",
+                "shasum": ""
+            },
+            "require": {
+                "encore/laravel-admin": "~1.6",
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Encore\\Simplemde\\SimplemdeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Encore\\Simplemde\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "song",
+                    "email": "zosong@126.com"
+                }
+            ],
+            "description": "Simplemde markdown editor extension for laravel-admin",
+            "homepage": "https://github.com/laravel-admin-ext/simplemde",
+            "keywords": [
+                "editor",
+                "extension",
+                "laravel-admin",
+                "markdown"
+            ],
+            "time": "2018-12-06T02:51:32+00:00"
+        },
+        {
             "name": "laravel/framework",
             "version": "v5.5.48",
             "source": {
@@ -1739,6 +1793,58 @@
                 "uuid"
             ],
             "time": "2018-07-19T23:38:55+00:00"
+        },
+        {
+            "name": "sharemant/laravel-admin-ext-editormd",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ShareManT/laravel-admin-ext-editormd.git",
+                "reference": "acb1f754f2aca0a80e0f3d9de68a3aa8db313825"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ShareManT/laravel-admin-ext-editormd/zipball/acb1f754f2aca0a80e0f3d9de68a3aa8db313825",
+                "reference": "acb1f754f2aca0a80e0f3d9de68a3aa8db313825",
+                "shasum": ""
+            },
+            "require": {
+                "encore/laravel-admin": "~1.6",
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "ShareManT\\EditorMd\\EditorMdServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ShareManT\\EditorMd\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "ShareManT",
+                    "email": "sharemant@163.com"
+                }
+            ],
+            "description": "EditorMd(V.1.5.0) for laravel-admin.",
+            "homepage": "https://github.com/laravel-admin-ext/editormd",
+            "keywords": [
+                "extension",
+                "laravel-admin"
+            ],
+            "time": "2019-02-06T14:24:39+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
