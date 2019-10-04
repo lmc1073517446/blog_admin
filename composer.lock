@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c82e74be410d40c6753048926cce8af0",
+    "content-hash": "638c0fcf976517269802ce03fdf7885c",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -746,6 +746,45 @@
                 "trusted proxy"
             ],
             "time": "2017-06-15T17:19:42+00:00"
+        },
+        {
+            "name": "havenshen/enjelly-down",
+            "version": "v1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/HavenShen/enjelly-down.git",
+                "reference": "a80b25814c30a4a94fd49a0f7a218d3b2de795b8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/HavenShen/enjelly-down/zipball/a80b25814c30a4a94fd49a0f7a218d3b2de795b8",
+                "reference": "a80b25814c30a4a94fd49a0f7a218d3b2de795b8",
+                "shasum": ""
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "HavenShen\\EnjellyDown\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "HavenShen",
+                    "email": "havenshen@gmail.com"
+                }
+            ],
+            "description": "一个Markdown解析器,基于Laravel5.*以上版本插件。",
+            "homepage": "https://github.com/HavenShen/enjelly-down",
+            "keywords": [
+                "laravel",
+                "markdown",
+                "解析器"
+            ],
+            "time": "2016-06-21T08:39:57+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",

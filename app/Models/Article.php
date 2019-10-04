@@ -3,8 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Basic;
 
-class Article extends Model
+
+class Article extends BasicModel
 {
     public $table='article';
 

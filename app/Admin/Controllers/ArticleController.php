@@ -36,7 +36,7 @@ class ArticleController extends AdminController
         $grid->column('id', 'ID');
         $grid->column('title', '标题');
 //        $grid->column('content', __('Content'));
-        $grid->column('author_id', '作者');
+        $grid->column('author_name', '作者');
         $grid->column('add_time', '发布时间')->display(function($add_time){
             return date('Y-m-d H:i:s', $add_time);
         });
@@ -76,7 +76,7 @@ class ArticleController extends AdminController
 
         $form->text('title', __('标题'));
         $form->editormd('content','内容');
-        $form->number('author_id', __('作者'));
+        $form->text('author_name', __('作者'));
         $form->number('read_num', __('阅读数量'))->default(0);
         $form->multipleSelect('label','标签')->options(config('constants.ARTICLE_TYPE'));
         $form->number('love_num', __('点赞数'))->default(0);
