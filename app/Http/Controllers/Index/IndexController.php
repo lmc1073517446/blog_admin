@@ -25,16 +25,19 @@ class IndexController extends Controller
         $this->articleModel = new Article();
         $this->commentService = $commentService;
     }
+    public function index(){
+        return view('index');
+    }
     /**
      * 首页
      * @params int page 页码
      * */
-    public function index($page=1, $type=0){
+    public function blog($page=1, $type=0){
         //TDK
         $header['title'] = "首页-MC的博客";
         $header['keywords'] = "博客,个人博客,MC个人博客,满成的个人博客,PHP,Laravel,Lara博客";
         $header['description'] = "";
-        $header['current_page'] = 'index';
+        $header['current_page'] = 'blog_list';
         if($type>0){
             $whereRaw = "find_in_set($type, label)";
             $params = ['type'=>$type];
@@ -46,7 +49,7 @@ class IndexController extends Controller
             'orderBy' => 'id',
             'sort' => 'desc',
             'size' => 4,
-            'pageUrl' => 'index_',
+            'pageUrl' => 'blog_',
             'page' => $page,
             'params' => isset($params)?$params:[],
         ]);
