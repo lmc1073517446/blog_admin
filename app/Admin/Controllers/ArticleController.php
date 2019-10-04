@@ -2,58 +2,19 @@
 
 namespace App\Admin\Controllers;
 
-use Encore\Admin\Facades\Admin;
-use Encore\Admin\Layout\Content;
+use Encore\Admin\Controllers\AdminController;
 use App\Models\Article;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
-use Encore\Admin\Show;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
-
-
-class ArticleController extends Controller
+class ArticleController extends AdminController
 {
     /**
-     * Title for current resource.
+     * 页面主题
      *
      * @var string
      */
-    protected $title = 'App\Models\article';
-
-    public function index()
-    {
-        return Admin::content(function (Content $content) {
-
-            $content->header('文章列表');
-            $content->description('文章列表');
-
-            $content->body($this->grid());
-        });
-    }
-    public function edit($id){
-        return Admin::content(function (Content $content) use ($id) {
-
-            $content->header('编辑');
-            $content->description('编辑');
-
-            $content->body($this->form()->edit($id));
-        });
-    }
-    public function create(){
-
-    }
-    public function show($id){
-        return Admin::content(function (Content $content) use ($id) {
-
-            $content->header('编辑');
-            $content->description('编辑');
-
-            $content->body($this->detail($id));
-        });
-    }
-
+    protected $title = '文章列表';
 
     /**
      * Make a grid builder.
@@ -62,7 +23,15 @@ class ArticleController extends Controller
      */
     protected function grid()
     {
-        $grid = new Grid(new article);
+        //https://laravel-admin.org/docs/zh/model-grid
+        $grid = new Grid(new Article);
+        //隐藏查看按钮
+        $grid->actions(function ($actions) {
+            $actions->disableView();
+        });
+        $grid->disableExport();//禁用导出按钮
+        $grid->disableColumnSelector();//禁用行选择器按钮
+
 
         $grid->column('id', 'ID');
         $grid->column('title', '标题');
@@ -75,62 +44,50 @@ class ArticleController extends Controller
         $grid->column('love_num', '点赞数');
         $grid->column('collect_num', '收藏数');
 
+
+        $grid->model()->orderBy('id', 'desc');
+
+        $grid->filter(function($filter){
+            // 去掉默认的id过滤器
+            //$filter->disableIdFilter();
+            $filter->like('title','标题');
+            $filter->like('content','内容');
+        });
+
+        //$grid->expandFilter();//搜索默认展开
         return $grid;
     }
 
-    /**
-     * Make a show builder.
-     *
-     * @param mixed $id
-     * @return Show
-     */
-    protected function detail($id)
-    {
 
-        $show = new Show(article::findOrFail($id));
-
-        $show->field('id', __('Id'));
-        $show->field('title', __('Title'));
-        $show->field('content', __('Content'));
-        $show->field('author_id', __('Author id'));
-        $show->field('add_time', __('Add time'));
-        $show->field('read_num', __('Read num'));
-        $show->field('love_num', __('Love num'));
-        $show->field('collect_num', __('Collect num'));
-
-        return $show;
-    }
 
     /**
      * Make a form builder.
      *
      * @return Form
      */
-    protected function form()
-    {
-        return Admin::form(article::class, function (Form $form) {
 
-            $form->text('title', __('Title'));
-           // $form->textarea('content', __('Content'));
-            //$form->simplemde('content');
-            $form->editormd('content');
-            $form->number('author_id', __('Author id'));
-//            $form->datetime('add_time', '发布时间')->with(function($add_time){
-//               return $add_time;
-//            })->disable();
+    protected function form($id=null)
+    {
+        $form = new Form(new Article);
+
+        $form->tools(function (Form\Tools $tools) {
+            $tools->disableView();//禁用查看按钮
+        });
+
+        $form->text('title', __('标题'));
+        $form->editormd('content','内容');
+        $form->number('author_id', __('作者'));
+        $form->number('read_num', __('阅读数量'))->default(0);
+        $form->multipleSelect('label','标签')->options(config('constants.ARTICLE_TYPE'));
+        $form->number('love_num', __('点赞数'))->default(0);
+        $form->number('collect_num', __('收藏数'))->default(0);
+        if(!empty($id)){
             $form->display('add_time', '发布时间')->with(function($add_time){
                 return date('Y-m-d H:i:s',$add_time);
             });
-            $form->number('read_num', __('Read num'));
-            $form->multipleSelect('label','标签')->options(config('constants.ARTICLE_TYPE'));
-            $form->number('love_num', __('Love num'));
-            $form->number('collect_num', __('Collect num'));
-            $form->saved(function (Form $form) {
+        }
 
-                $form->model()->id;
-
-            });
-        });
+        return $form;
     }
 
 }
