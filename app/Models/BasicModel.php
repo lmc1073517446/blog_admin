@@ -26,7 +26,7 @@ class BasicModel extends Model
         $orderBy   = 'id';
         $sort      = 'desc';
         $isAsArray = true;
-        $pageUrl = 'list_';
+        $pageUrl = 'index_';
         $params = [];
 
         extract($params);

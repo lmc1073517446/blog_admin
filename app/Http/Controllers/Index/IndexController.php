@@ -28,30 +28,30 @@ class IndexController extends Controller
     /**
      * 首页
      * */
-    public function index(){
+//    public function index(){
+//        //TDK
+//        $header['title'] = "首页-MC的博客";
+//        $header['keywords'] = "博客,个人博客,MC个人博客,满成的个人博客,PHP,Laravel,Lara博客";
+//        $header['description'] = "";
+//        $header['current_page'] = 'index';
+//
+//        //获取文章列表
+//        $articles = $this->articleModel->getList(['size'=>8]);
+//        //点赞最多的三篇文章
+//        $love_articles = $this->articleModel->getList(['orderBy' => 'love_num','size' => 6]);
+//        return view('index', ['header'=> $header, 'articles' => $articles, 'love_articles'=> $love_articles]);
+//
+//    }
+    /**
+     * 首页
+     * @params int page 页码
+     * */
+    public function index($page=1, $type=0){
         //TDK
         $header['title'] = "首页-MC的博客";
         $header['keywords'] = "博客,个人博客,MC个人博客,满成的个人博客,PHP,Laravel,Lara博客";
         $header['description'] = "";
         $header['current_page'] = 'index';
-
-        //获取文章列表
-        $articles = $this->articleModel->getList(['size'=>8]);
-        //点赞最多的三篇文章
-        $love_articles = $this->articleModel->getList(['orderBy' => 'love_num','size' => 6]);
-        return view('index', ['header'=> $header, 'articles' => $articles, 'love_articles'=> $love_articles]);
-
-    }
-    /**
-     * 文章列表页
-     * @params int page 页码
-     * */
-    public function blog($page=1, $type=0){
-        //TDK
-        $header['title'] = "文章列表-MC的博客";
-        $header['keywords'] = "";
-        $header['description'] = "";
-        $header['current_page'] = 'blog_list';
         if($type>0){
             $whereRaw = "find_in_set($type, label)";
             $params = ['type'=>$type];
@@ -63,7 +63,7 @@ class IndexController extends Controller
             'orderBy' => 'id',
             'sort' => 'desc',
             'size' => 4,
-            'pageUrl' => 'blog_',
+            'pageUrl' => 'index_',
             'page' => $page,
             'params' => isset($params)?$params:[],
         ]);

@@ -68,7 +68,7 @@
                         </a>
                         <ul id="nav-mobile" class="main-menu center-align hide-on-med-and-down">
                             {{--<li @if($header['current_page']=='index')class="active"@endif><a href="/">首页</a></li>--}}
-                            <li @if($header['current_page']=='blog_list')class="active"@endif><a href="blog.html">首页</a></li>
+                            <li @if($header['current_page']=='index')class="active"@endif><a href="index.html">首页</a></li>
                             {{--<li class="dropdown">--}}
                                 {{--<a href="#">PAGES <i class="icofont icofont-simple-down"></i></a>--}}
                                 {{--<ul class="dropdown-container">--}}
@@ -86,7 +86,7 @@
                         <ul class="side-nav" id="mobile-demo">
                             <li class="snavlogo center-align"><a href="/"><img src="/img/logo.png" alt="logo"></a></li>
                             {{--<li @if($header['current_page']=='index')class="active"@endif><a href="/">首页</a></li>--}}
-                            <li @if($header['current_page']=='blog_list')class="active"@endif><a href="blog.html">首页</a></li>
+                            <li @if($header['current_page']=='index')class="active"@endif><a href="index.html">首页</a></li>
                             {{--<li class="dropdown">--}}
                             {{--<a href="#">PAGES <i class="icofont icofont-simple-down"></i></a>--}}
                             {{--<ul class="dropdown-container">--}}
