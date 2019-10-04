@@ -23,7 +23,7 @@
                 <div class="blogs mb-30">
                     <div class="card">
                         <!-- /.card-image -->
-                        <div class="card-content w100dt">
+                        <div class="card-content w100dt" style="margin-right:10px;">
                             <a href="#" class="card-title mb-30">
                                 {{ $article->title }}
                             </a>
@@ -34,7 +34,7 @@
                                     </p>
                                 </li>
                                 <li>
-                                    <i class="icofont icofont-ui-calendar"></i> {{ date('Y-m-d', $article->add_time) }}
+                                    <i class="icofont icofont-ui-calendar"></i> {{ $article->add_time }}
                                 </li>
                             </ul>
 
@@ -55,7 +55,7 @@
                                 {!! $article->content !!}
                             </p>
 
-                            <ul class="tag-list left">
+                            <ul class="tag-list left" style="margin-top:20px;">
                                 @foreach($article->label as $val)
                                     <li><a href="#!" class="waves-effect">#{{ $article_type[$val] }}</a></li>
                                 @endforeach

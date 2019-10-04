@@ -48,7 +48,7 @@
                                                 </p>
                                             </li>
                                             <li>
-                                                <i class="icofont icofont-ui-calendar"></i> {{ date('Y-m-d', $article->add_time) }}
+                                                <i class="icofont icofont-ui-calendar"></i> {{ $article->add_time }}
                                             </li>
                                         </ul>
 

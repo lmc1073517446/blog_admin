@@ -37,9 +37,7 @@ class ArticleController extends AdminController
         $grid->column('title', '标题');
 //        $grid->column('content', __('Content'));
         $grid->column('author_name', '作者');
-        $grid->column('add_time', '发布时间')->display(function($add_time){
-            return date('Y-m-d H:i:s', $add_time);
-        });
+        $grid->column('add_time', '发布时间');
         $grid->column('read_num', '月度数');
         $grid->column('love_num', '点赞数');
         $grid->column('collect_num', '收藏数');
@@ -81,11 +79,9 @@ class ArticleController extends AdminController
         $form->multipleSelect('label','标签')->options(config('constants.ARTICLE_TYPE'));
         $form->number('love_num', __('点赞数'))->default(0);
         $form->number('collect_num', __('收藏数'))->default(0);
-        if(!empty($id)){
-            $form->display('add_time', '发布时间')->with(function($add_time){
-                return date('Y-m-d H:i:s',$add_time);
-            });
-        }
+       // $form->number('add_time')->hide();
+        $form->datetime('add_time', __('发布时间'))->default(date('Y-m-d H:i:s'));
+        //$form->ignore(['column1', 'column2', 'column3']);
 
         return $form;
     }
