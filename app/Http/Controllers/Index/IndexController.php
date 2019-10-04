@@ -27,23 +27,6 @@ class IndexController extends Controller
     }
     /**
      * 首页
-     * */
-//    public function index(){
-//        //TDK
-//        $header['title'] = "首页-MC的博客";
-//        $header['keywords'] = "博客,个人博客,MC个人博客,满成的个人博客,PHP,Laravel,Lara博客";
-//        $header['description'] = "";
-//        $header['current_page'] = 'index';
-//
-//        //获取文章列表
-//        $articles = $this->articleModel->getList(['size'=>8]);
-//        //点赞最多的三篇文章
-//        $love_articles = $this->articleModel->getList(['orderBy' => 'love_num','size' => 6]);
-//        return view('index', ['header'=> $header, 'articles' => $articles, 'love_articles'=> $love_articles]);
-//
-//    }
-    /**
-     * 首页
      * @params int page 页码
      * */
     public function index($page=1, $type=0){
