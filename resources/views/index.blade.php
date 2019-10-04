@@ -171,7 +171,7 @@
         <a>专心修炼吹流弊和做博客!</a>
     </div>
     <div class="menu">
-        <a class="btn btn-lg red" href="/blog.html" >进入文章列表</a>
+        <a class="btn btn-lg red" href="/blog.html" >进入博客</a>
         <a class="btn btn-lg green" href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1073517446" >QQ</a>
         <a class="btn btn-lg bai" href="/blog.html" >留言</a>
 
