@@ -16,7 +16,7 @@ class BasicModel extends Model
      * @params $orderBy string 排序字段
      * @params $sort string 排序方式 asc/desc
      * */
-    public function getPageList($params){
+    public function getPageList($inputs){
         $fields    = '*';
         $page      = 1;
         $size      = 10;
@@ -29,7 +29,7 @@ class BasicModel extends Model
         $pageUrl = 'index_';
         $params = [];
 
-        extract($params);
+        extract($inputs);
         $builder = self::query();
         //构建查询条件
         foreach($condition as $value){
