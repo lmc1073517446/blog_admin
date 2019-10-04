@@ -177,7 +177,7 @@
 
     </div>
 </div>
-<span class="copyright">&copy; 2019&nbsp<a href="/">MC 的博客</a></span>
+<span class="copyright">&copy; 2019&nbsp<a href="/blog.html">MC 的博客</a></span>
 <script src="/index/js/Seffects.js" type="text/javascript"></script>
 
 <script src="/index/js/jquery.min.js"></script>
