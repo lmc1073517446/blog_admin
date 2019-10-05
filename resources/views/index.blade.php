@@ -161,7 +161,7 @@
         alert(dom.src);
     }
 </script>
-<body class="body--ready" data-pinterest-extension-installed="cr1.39.1"  oncontextmenu=self.event.returnValue=false onselectstart="return false">
+<body onclick="toJump()" class="body--ready" data-pinterest-extension-installed="cr1.39.1"  oncontextmenu=self.event.returnValue=false onselectstart="return false">
 
 <canvas class="canvas" width="100%" height="100%"></canvas>
 <div id="willerce">
@@ -191,5 +191,8 @@
             lis[i].style.background = 'rgba(246, 246, 246, 0.5)';
     }
     window.onload = bgChange;
+    function toJump(){
+        location.href='/blog.html';
+    }
 </script>
 </body><div></div></html>
