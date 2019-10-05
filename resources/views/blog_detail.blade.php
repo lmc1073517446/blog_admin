@@ -23,7 +23,7 @@
                 <div class="blogs mb-30">
                     <div class="card">
                         <!-- /.card-image -->
-                        <div class="card-content" style="margin-right:10px;">
+                        <div class="card-content" style="margin-right:10px;display:table;">
                             <a href="#" class="card-title mb-30">
                                 {{ $article->title }}
                             </a>
