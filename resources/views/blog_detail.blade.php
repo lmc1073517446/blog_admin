@@ -23,7 +23,7 @@
                 <div class="blogs mb-30">
                     <div class="card">
                         <!-- /.card-image -->
-                        <div class="card-content w100dt" style="margin-right:10px;">
+                        <div class="card-content" style="margin-right:10px;">
                             <a href="#" class="card-title mb-30">
                                 {{ $article->title }}
                             </a>
@@ -241,7 +241,7 @@
                                     <span class="effect"></span>
                                 </div>
                                 <!-- /.card-image -->
-                                <div class="card-content">
+                                <div class="card-content w100dt">
                                     <p>
                                         <a href="#" class="tag left w100dt l-blue mb-10">Fashion</a>
                                     </p>
