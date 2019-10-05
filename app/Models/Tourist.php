@@ -16,7 +16,7 @@ class Tourist extends BasicModel
 
     public function recordRourist(){
         $macAddr = new MacAddr();
-        $mac_addr = $macAddr->GetMacAddr();
+        $mac_addr = $macAddr->GetMacAddr(PHP_OS);
 
         $info = $this->where('mac_addr','=',$mac_addr)->first();
         if(empty($info)){
