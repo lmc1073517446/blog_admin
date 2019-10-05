@@ -15,6 +15,7 @@ class Tourist extends BasicModel
     public $timestamps = false;
 
     public function recordRourist(){
+        die;
         $macAddr = new MacAddr();
         $mac_addr = $macAddr->GetMacAddr(PHP_OS);
 

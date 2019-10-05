@@ -131,5 +131,37 @@ class BasicModel extends Model
         return self::insertGetId($attribute);
     }
 
+    /**
+     * 保存数据
+     * @params $params array 条件
+     * @params $attribute array 保存的数据
+     * */
+    public function save($params, $attribute){
+        $condition = [];
+
+        extract($params);
+        $builder = self::query();
+        //构建查询条件
+        if(isset($condition[0]) && $condition[0]=='AND'){
+            array_shift($condition);
+            foreach($condition as $value){
+                if(count($value)==3){
+                    $builder->where(array_shift($value), array_shift($value), array_shift($value));
+                }
+            }
+        }else{
+            foreach($condition as $key=>$value){
+                $builder->where([$key=>$value]);
+            }
+        }
+        $info = $builder->first();
+        if(empty($info)){
+            return $builder->insert($attribute);
+        }else{
+            return $builder->update($attribute);
+        }
+
+    }
+
 
 }
