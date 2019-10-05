@@ -241,7 +241,7 @@
                                     <span class="effect"></span>
                                 </div>
                                 <!-- /.card-image -->
-                                <div class="card-content w100dt">
+                                <div class="card-content">
                                     <p>
                                         <a href="#" class="tag left w100dt l-blue mb-10">Fashion</a>
                                     </p>

@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Comment extends BasicModel
 {
-    //use SoftDeletes;
+    use SoftDeletes;
     /**
      * 关联到模型的数据表
      *
