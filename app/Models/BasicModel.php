@@ -136,7 +136,7 @@ class BasicModel extends Model
      * @params $params array 条件
      * @params $attribute array 保存的数据
      * */
-    public function save($params, $attribute){
+    public function toSave($params, $attribute){
         $condition = [];
 
         extract($params);
