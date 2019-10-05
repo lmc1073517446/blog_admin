@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Services\CommentService;
 use Illuminate\Support\Facades\Validator;
+use App\Libraries\MacAddr;
 
 class IndexController extends Controller
 {

@@ -18,6 +18,9 @@ class Comment extends BasicModel
      */
     protected $table = 'comment';
 
+    public $timestamps = false;
+
+
     /**
      * @var string 主键
      */
