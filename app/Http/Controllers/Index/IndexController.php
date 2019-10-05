@@ -53,8 +53,14 @@ class IndexController extends Controller
             'page' => $page,
             'params' => isset($params)?$params:[],
         ]);
+        //热门文章列表
+        $hot_articles = $this->articleModel->getList([
+            'orderBy' => 'read_num',
+            'sort' => 'desc',
+            'size' => 10,
+        ]);
 
-        return view('blog', ['header'=> $header, 'articles' => $articles, 'article_type' => getArticleLabel()]);
+        return view('blog', ['header'=> $header, 'articles' => $articles, 'article_type' => getArticleLabel(),'hot_article'=>$hot_articles]);
     }
     /**
      * 文章详情页
@@ -76,6 +82,12 @@ class IndexController extends Controller
         $articlePrev = $this->articleModel->getOne(['condition'=>['AND',['id', '<', $id]]]);
         //获取评论列表
         $masterComment = $this->commentService->articleCommentLists($id);
+        //热门文章列表
+        $hot_articles = $this->articleModel->getList([
+            'orderBy' => 'read_num',
+            'sort' => 'desc',
+            'size' => 10,
+        ]);
 
         return view('blog_detail',[
             'header'=> $header,
@@ -84,6 +96,7 @@ class IndexController extends Controller
             'article_prev'=>$articlePrev,
             'comment_list' => $masterComment,
             'article_type' => getArticleLabel(),
+            'hot_article' => $hot_articles,
         ]);
     }
     /**
