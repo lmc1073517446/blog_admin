@@ -6,14 +6,13 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
-        "encore/laravel-admin": "^1.7",
         "fideloper/proxy": "~3.3",
         "havenshen/enjelly-down": "^1.1",
-        "laravel-admin-ext/redis-manager": "^1.1",
-        "laravel-admin-ext/simplemde": "^1.0",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
-        "sharemant/laravel-admin-ext-editormd": "^1.0"
+        "phpoffice/phpword": "v0.13.*",
+        "workerman/gatewayclient": "^3.0",
+        "yuanchao/laravel-5-markdown-editor": "dev-master"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
@@ -29,7 +28,11 @@
         ],
         "psr-4": {
             "App\\": "app/"
-        }
+        },
+        "files":[
+            "app/Helpers/functions.php"
+            
+        ]
     },
     "autoload-dev": {
         "psr-4": {
@@ -58,11 +61,5 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "optimize-autoloader": true
-    },
-    "repositories": {
-        "packagist": {
-            "type": "composer",
-            "url": "https://packagist.phpcomposer.com"
-        }
     }
 }

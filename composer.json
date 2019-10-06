@@ -7,6 +7,7 @@
     "require": {
         "php": ">=7.0.0",
         "encore/laravel-admin": "^1.7",
+        "erusev/parsedown": "^1.7",
         "fideloper/proxy": "~3.3",
         "havenshen/enjelly-down": "^1.1",
         "laravel-admin-ext/redis-manager": "^1.1",

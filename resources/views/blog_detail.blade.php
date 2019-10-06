@@ -52,7 +52,10 @@
                             </ul>
 
                             <p class="w100dt mb-10">
-                                {!! $article->content !!}
+                                <iframe style="width:700px;" src="/blog_content_{{ $article->id }}.html"  onload="javascript:iFrameHeight()" name="ifbox" src="" scrolling="no" width="550"
+                                        frameborder="0" id="ifbox">
+                                {{--{!! $article->content !!}--}}
+                                </iframe>
                             </p>
 
                             <ul class="tag-list left" style="margin-top:20px;">
@@ -418,5 +421,12 @@
                 });
             })
         })
+        function iFrameHeight() {
+            var ifm = document.getElementById("ifbox");
+            var subWeb = document.frames ? document.frames["ifbox"].document : ifm.contentDocument;
+            if (ifm != null && subWeb != null) {
+                ifm.height = subWeb.body.scrollHeight;
+            }
+        }
     </script>
 @endsection

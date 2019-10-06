@@ -9,6 +9,7 @@ use App\Models\Article;
 use App\Services\CommentService;
 use Illuminate\Support\Facades\Validator;
 use App\Libraries\MacAddr;
+use Parsedown;
 
 class IndexController extends Controller
 {
@@ -49,7 +50,7 @@ class IndexController extends Controller
             'whereRaw' => isset($whereRaw)?$whereRaw:'',
             'orderBy' => 'id',
             'sort' => 'desc',
-            'size' => 4,
+            'size' => 8,
             'pageUrl' => 'blog_',
             'page' => $page,
             'params' => isset($params)?$params:[],
@@ -76,7 +77,9 @@ class IndexController extends Controller
 
         //获取当前文章内容
         $article = $this->articleModel->getOne(['condition'=>['id'=>$id]]);
-        $article->content = \EnjellyDown::markdown($article->content);//解析markdown语法
+        $Parsedown = new Parsedown();
+        $article->content = $Parsedown->setBreaksEnabled(true)->text($article->content); # prints: <p>Hello <em>Parsedown</em>!</p>
+        //die;
         //获取下一篇文章
         $articleNext = $this->articleModel->getOne(['condition'=>[ 'AND',['id', '>', $id]],'sort' => 'asc']);
         //获取上一篇文章
@@ -99,6 +102,15 @@ class IndexController extends Controller
             'article_type' => getArticleLabel(),
             'hot_article' => $hot_articles,
         ]);
+    }
+
+    public function blogContent($id){
+        //TODO 数据从session闪存中获取
+        //获取当前文章内容
+        $article = $this->articleModel->getOne(['condition'=>['id'=>$id]]);
+        $Parsedown = new Parsedown();
+        $content = $Parsedown->setBreaksEnabled(true)->text($article->content); # prints: <p>Hello <em>Parsedown</em>!</p>
+        return view('blog_content',['content'=>$content]);
     }
     /**
      * 关于我

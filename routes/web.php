@@ -28,6 +28,8 @@ Route::get('/blog_{page?}.html', function(App\Http\Controllers\Index\IndexContro
 Route::get('/blog.html', 'Index\IndexController@blog');
 //文章详情
 Route::get('/blog_detail_{id?}.html', 'Index\IndexController@blogDetail');
+Route::get('/blog_content_{id?}.html', 'Index\IndexController@blogContent');
+
 //发表评论
 Route::post('/to_comment', 'Index\IndexController@comment');
 //关于我
