@@ -17,8 +17,8 @@ class RecordTourist
     public function handle($request, Closure $next)
     {
         //记录游客来访
-        $tourist = new Tourist();
-        $tourist->recordRourist();
+       // $arr = ['aa'=>'bb','cc'=>'dd'];
+
 
         return $next($request);
     }

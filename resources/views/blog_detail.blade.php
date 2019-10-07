@@ -151,7 +151,7 @@
 
                                     <ul class="post-mate-time left">
                                         <li class="reply">
-                                            <a href="javascript:void(0)" reply-type="master" class="comment-reply" pid="{{ $comment['id'] }}" comment-user-name="{{ $comment['user_name'] }}" aid="{{ $article->id }}" top-level="{{ $comment['id'] }}">
+                                            <a href="javascript:void(0)" reply-type="master" class="comment-reply" pid="{{ $comment['id'] }}" reply-user-name="{{ $comment['user_name'] }}" aid="{{ $article->id }}" top-level="{{ $comment['id'] }}" master-slave="{{ $comment['id'] }}">
                                                 回复
                                             </a>
                                         </li>
@@ -175,7 +175,7 @@
                                                 </a>
                                             </h4>
                                             <p class="comment-text mb-10">
-                                                回复<a href="javascript:void(0)" class="card-title l-blue">{{ $slave['reply_user_name'] }}</a>：{{ $slave['content'] }}
+                                                @<a href="javascript:void(0)" class="card-title l-blue">{{ $slave['reply_user_name'] }}</a>：{{ $slave['content'] }}
                                             </p>
 
                                             <ul class="post-mate-time left">
@@ -331,7 +331,7 @@
                         '<p class="comment-text mb-10">' + content +
                         '</p>' +
                         '<ul class="post-mate-time left">' +
-                        '<li class="reply"><a href="javascript:void(0)" class="comment-reply" pid="'+pid+'" comment-user-name="'+e.data.user_name+'" aid="'+a_id+'" top-level="'+e.data.id+'">回复</a></li>' +
+                        '<li class="reply"><a href="javascript:void(0)" class="comment-reply" pid="'+pid+'" comment-user-name="'+e.data.user_name+'" aid="'+a_id+'" top-level="'+e.data.id+'" master-slave="'+e.data.id+'">回复</a></li>' +
                         '<li><i class="icofont icofont-ui-calendar"></i>刚刚</li>' +
                         '</ul>' +
                         '</div>' +
@@ -346,10 +346,9 @@
                 });
             })
             //评论回复
-            $('.comment-area').on('click','comment-reply',function(){
-                alert(2);
+            $(document).on('click','.comment-reply',function(){
                 var pid = $(this).attr('pid');
-                var reply_user_name = $(this).attr('comment-user-name');
+                var reply_user_name = $(this).attr('reply-user-name');
                 var aid = $(this).attr('aid');
                 var master_slave = $(this).attr('master-slave');
                 var top_level = $(this).attr('top-level');
@@ -357,14 +356,13 @@
                     '<div class="cmnt-reply comment w100dt">' +
                         '<div class="ppic left"><img src="/img/img3.png" alt="Image"></div>' +
                         '<div class="pname">' +
-                            '<h4 class="mb-10"><a href="#" class="card-title l-blue">Angelina Jolie</a></h4>' +
+                            '<h4 class="mb-10">@<a href="#" class="card-title l-blue">'+reply_user_name+'</a></h4>' +
                             '<p class="comment-text mb-10">' +
                                 '<input id="" type="text" class="validate">' +
-                                '<a href="#reply" class="waves-effect waves-light reply-comment" pid="'+pid+'" reply-user-name="'+reply_user_name+'" aid="'+aid+'" master-slave="'+master_slave+'">发表</a>' +
+                                '<a href="#reply" class="waves-effect waves-light reply-comment" pid="'+pid+'" reply-user-name="'+reply_user_name+'" aid="'+aid+'" top-level="'+top_level+'" master-slave="'+master_slave+'">发表</a>' +
                             '</p>' +
                         '</div>' +
                     '</div>';
-                alert(1);
                 $('.comment-id-'+top_level).append(html);
                 location.href='#reply';
 
@@ -402,16 +400,16 @@
                                     '<h4 class="mb-10">' +
                                         '<a href="#" class="card-title l-blue">'+e.data.user_name+'</a>' +
                                     '</h4>' +
-                                    '<p class="comment-text mb-10">'+content+'</p>' +
+                                    '<p class="comment-text mb-10">@'+'<a href="javascript:void(0)" class="card-title l-blue">'+reply_user_name+'</a>'+':'+content+'</p>' +
                                     '<ul class="post-mate-time left">' +
                                         '<li class="reply">' +
-                                            '<a href="javascript:void(0)" class="comment-reply" pid="'+e.data.id+'" comment-user-name="'+e.data.user_name+'" aid="'+a_id+'" master-slave="'+e.data.master_slave+'">回复</a>' +
+                                            '<a href="javascript:void(0)" class="comment-reply" pid="'+e.data.id+'" reply-user-name="'+e.data.user_name+'" aid="'+a_id+'" top-level="'+master_slave+'" master-slave="'+e.data.master_slave+'">回复</a>' +
                                         '</li>' +
                                         '<li><i class="icofont icofont-ui-calendar"></i>刚刚</li>' +
                                     '</ul>' +
                                 '</div>' +
                             '</div>';
-                        $('.comment-id-'+e.data.pid).append(html);
+                        $('.comment-id-'+master_slave).append(html);
                         //location.href='#content-start'
                     }else{
                         alert('评论失败');

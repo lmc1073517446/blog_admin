@@ -50,7 +50,7 @@ class IndexController extends Controller
             'whereRaw' => isset($whereRaw)?$whereRaw:'',
             'orderBy' => 'id',
             'sort' => 'desc',
-            'size' => 8,
+            'size' => 4,
             'pageUrl' => 'blog_',
             'page' => $page,
             'params' => isset($params)?$params:[],
@@ -137,9 +137,10 @@ class IndexController extends Controller
         $inputs = $request->all();
         $rules = [
             'a_id' => 'required|numeric',
-            'content' =>'required|numeric',
-            'pid' =>'required',
+            'content' =>'required',
+            'pid' =>'required|numeric',
             'master_slave' =>'required|numeric',
+           // 'reply_user_name'=>'',
         ];
         $validator = Validator::make($inputs,$rules,['参数有误']);
         if($validator->fails()){
