@@ -17,24 +17,27 @@
 Route::match(['post','get'], '/to-login', 'Index\LoginController@login');
 //首页
 Route::get('/', 'Index\IndexController@index');
+
 //文章列表-带排序
-Route::get('/blog_{page?}_{type?}.html', function(App\Http\Controllers\Index\IndexController $index, $page=1, $type='1'){
+Route::get('/blog_{page?}_{type?}.html', function(App\Http\Controllers\Index\ArticlesController $index, $page=1, $type='1'){
     return $index->blog($page, $type);
 })->where('page','\d+');
 //文章列表-不需要排序
-Route::get('/blog_{page?}.html', function(App\Http\Controllers\Index\IndexController $index, $page=1, $order='id', $sort='desc'){
-    return $index->blog($page, $order, $sort);
+Route::get('/blog_{page?}.html', function(App\Http\Controllers\Index\ArticlesController $index, $page=1, $order='id', $sort='desc'){
+    return $index->index($page, $order, $sort);
 })->where('page','\d+');
-Route::get('/blog.html', 'Index\IndexController@blog');
+Route::get('/blog.html', 'Index\ArticlesController@index');
+
 //文章详情
-Route::get('/blog_detail_{id?}.html', 'Index\IndexController@blogDetail');
-Route::get('/blog_content_{id?}.html', 'Index\IndexController@blogContent');
+Route::get('/blog_detail_{id?}.html', 'Index\ArticlesController@blogDetail');
+Route::get('/blog_content_{id?}.html', 'Index\ArticlesController@blogContent');
 
 //发表评论
-Route::post('/to_comment', 'Index\IndexController@comment');
+Route::post('/to_comment', 'Index\CommentsController@comment');
+
 //关于我
-Route::get('/contact.html', 'Index\IndexController@contact');
-Route::get('/contact', 'Index\IndexController@contact');
+Route::get('/contact.html', 'Index\ContactController@index');
+Route::get('/contact', 'Index\IndexController@index');
 
 
 
