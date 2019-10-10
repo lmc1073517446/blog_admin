@@ -40,11 +40,8 @@ class BasicModel extends Model
         }
 
         $builder->orderBy($orderBy, $sort);
-        if(!empty($params)){
-            $builder->select($fields)->paginate($size, ['*'], 'page', $page)->type = $params['type'];
-        }
 
-        return $builder->select($fields)->paginate($size, ['*'], 'page', $page)->withUrl($pageUrl, '.html');
+        return $builder->select($fields)->paginate($size, ['*'], 'page', $page)->withUrl($pageUrl, '.html',$params);
     }
 
     /**
