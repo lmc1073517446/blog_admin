@@ -10,7 +10,7 @@ use App\Libraries\MacAddr;
 class Tourist extends BasicModel
 {
     use SoftDeletes;
-    public $table='tourist';
+    public $table='visits';
 
     public $timestamps = false;
 
