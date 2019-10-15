@@ -11,6 +11,8 @@
 
 
 
+
+
 <!-- ==================== single-blog-section start ====================-->
 <section id="single-blog-section" class="single-blog-section w100dt mb-50">
     <div class="container">
@@ -50,8 +52,9 @@
                             </ul>
 
                             <p class="w100dt mb-10">
-                                <iframe style="width:700px;" src="/blog_content_{{ $article->id }}.html" id="iframepage" scrolling="no" onload="changeFrameHeight()" frameborder="0">
-                                    {{--{!! $article->content !!}--}}
+                                <iframe style="width:700px;" src="/blog_content_{{ $article->id }}.html"  onload="javascript:iFrameHeight()" name="ifbox" src="" scrolling="no" width="550"
+                                        frameborder="0" id="ifbox">
+                                {{--{!! $article->content !!}--}}
                                 </iframe>
                             </p>
 
@@ -422,16 +425,6 @@
             if (ifm != null && subWeb != null) {
                 ifm.height = subWeb.body.scrollHeight;
             }
-        }
-        function changeFrameHeight(){
-            var ifm= document.getElementById("iframepage");
-            ifm.height=document.documentElement.clientHeight;
-
-        }
-
-        window.onresize=function(){
-            changeFrameHeight();
-
         }
     </script>
 @endsection
