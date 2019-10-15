@@ -50,7 +50,7 @@
                             </ul>
 
                             <p class="w100dt mb-10">
-                                <iframe style="width:700px;" src="/blog_content_{{ $article->id }}.html" id="iframepage" scrolling="no" οnlοad="changeFrameHeight()" frameborder="0">
+                                <iframe style="width:700px;" src="/blog_content_{{ $article->id }}.html" id="iframepage" scrolling="no" onload="changeFrameHeight()" frameborder="0">
                                     {{--{!! $article->content !!}--}}
                                 </iframe>
                             </p>
