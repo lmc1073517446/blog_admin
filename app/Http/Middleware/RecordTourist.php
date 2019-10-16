@@ -23,6 +23,7 @@ class RecordTourist
             'last_time' => date('Y-m-d H:i:s'),
             'ip' => $request->getClientIp(),
             'region' => \GeoIP::getLocation($request->getClientIp())->city,
+            'url' => $request->path(),
         ];
         $visitModel = new Tourist();
         $visitModel->insert($visit);
