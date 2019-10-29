@@ -7,10 +7,10 @@
     <meta name="keywords" content="博客,个人博客,MC个人博客,满成的个人博客,PHP,Laravel,Lara博客" />
     <meta name="author" content="limanc.com">
     <title>首页-MC的博客</title>
-    <link rel="stylesheet" href="/index/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/index/css/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="{{asset(_STATIC_FILES_.'/index/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset(_STATIC_FILES_.'/index/css/bootstrap-grid.min.css')}}" />
     <!--播放器-->
-    <link rel="stylesheet" href="/index/css/player.css">
+    <link rel="stylesheet" href="{{asset(_STATIC_FILES_.'/index/css/player.css')}}">
     <style type="text/css">
         .btn{
             border: none;
@@ -117,7 +117,7 @@
             .btn{ margin-bottom: 20px; }
         }
     </style>
-    <link href="/index/css/Location.css" type="text/css" rel="stylesheet">
+    <link href="{{asset(_STATIC_FILES_.'/index/css/Location.css')}}" type="text/css" rel="stylesheet">
 
 </head>
 <script>function fuckyou(){
@@ -166,7 +166,7 @@
 <canvas class="canvas" width="100%" height="100%"></canvas>
 <div id="willerce">
     <div>
-        <img src="/img/logo.png" id="logo" title="JOKER"/>
+        <img src="{{asset(_STATIC_FILES_.'/img/logo.png')}}" id="logo" title="JOKER"/>
         <h1>MC 的博客</h1>
         <a>专心修炼吹流弊和做博客!</a>
     </div>
@@ -178,10 +178,10 @@
     </div>
 </div>
 <span class="copyright">&copy; 2019&nbsp<a href="/blog.html">MC 的博客</a></span>
-<script src="/index/js/Seffects.js" type="text/javascript"></script>
+<script src="{{asset(_STATIC_FILES_.'/index/js/Seffects.js')}}" type="text/javascript"></script>
 
-<script src="/index/js/jquery.min.js"></script>
-<script src="/index/js/jquery.marquee.min.js"></script>
+<script src="{{asset(_STATIC_FILES_.'/index/js/jquery.min.js')}}"></script>
+<script src="{{asset(_STATIC_FILES_.'/index/js/jquery.marquee.min.js')}}"></script>
 
 <script>
 

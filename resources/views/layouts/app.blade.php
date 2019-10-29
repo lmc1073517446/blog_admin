@@ -11,15 +11,15 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- css include -->
-    <link rel="stylesheet" type="text/css" href="/css/materialize.css">
-    <link rel="stylesheet" type="text/css" href="/css/icofont.css">
-    <link rel="stylesheet" type="text/css" href="/css/owl.carousel.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/owl.theme.default.min.css">
+    <link rel="stylesheet" type="text/css" href="{{asset(_STATIC_FILES_.'/css/materialize.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset(_STATIC_FILES_.'/css/icofont.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset(_STATIC_FILES_.'/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset(_STATIC_FILES_.'/css/owl.theme.default.min.css')}}">
 
     <!-- my css include -->
-    <link rel="stylesheet" type="text/css" href="/css/custom-menu.css">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <link rel="stylesheet" type="text/css" href="/css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="{{asset(_STATIC_FILES_.'/css/custom-menu.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset(_STATIC_FILES_.'/css/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset(_STATIC_FILES_.'/css/responsive.css')}}">
 
 </head>
 
@@ -170,12 +170,12 @@
 
 
 <!-- my custom js -->
-<script type="text/javascript" src="/js/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="/js/materialize.js"></script>
-<script type="text/javascript" src="/js/owl.carousel.min.js"></script>
+<script type="text/javascript" src="{{asset(_STATIC_FILES_.'/js/jquery-3.1.1.min.js')}}"></script>
+<script type="text/javascript" src="{{asset(_STATIC_FILES_.'/js/materialize.js')}}"></script>
+<script type="text/javascript" src="{{asset(_STATIC_FILES_.'/js/owl.carousel.min.js')}}"></script>
 
 <!-- my custom js -->
-<script type="text/javascript" src="/js/custom.js"></script>
+<script type="text/javascript" src="{{asset(_STATIC_FILES_.'/js/custom.js')}}"></script>
 
 <script type="text/javascript">
 </script>
