@@ -73,6 +73,7 @@ class Swoole extends Command
             echo '222';
             $clients = $this->ws->getClientList();
             $clientId = [];
+            echo json_encode($clients);
             foreach ($clients as $value) {
                 $this->ws->push($value, 'sdfd');
             }
