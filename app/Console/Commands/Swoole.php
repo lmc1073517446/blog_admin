@@ -55,7 +55,7 @@ class Swoole extends Command
 
         //监听WebSocket连接打开事件
         $this->ws->on('open', function ($ws, $request) {
-            var_dump($request->fd . "连接成功");
+            var_dump($request->fd . "success");
             // $ws->push($request->fd, "hello, welcome\n");
         });
         //监听WebSocket消息事件
@@ -64,7 +64,7 @@ class Swoole extends Command
             // $ws->push($frame->fd, "server: {$frame->data}");
             // var_dump($ws->connection_info($frame->fd));
             //fd绑定客户端传过来的标识uid
-            $ws->bind($frame->fd, $frame->data);
+            //$ws->bind($frame->fd, $frame->data);
         });
         $this->ws->on('request', function ($request, $response) {
             // 接收http请求从post获取参数
