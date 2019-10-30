@@ -56,34 +56,34 @@ class Swoole extends Command
         //监听WebSocket连接打开事件
         $this->ws->on('open', function ($ws, $request) {
             var_dump($request->fd . "success");
-            // $ws->push($request->fd, "hello, welcome\n");
+             $ws->push($request->fd, "hello, welcome\n");
         });
         //监听WebSocket消息事件
         $this->ws->on('message', function ($ws, $frame) {
-            // echo "Message: {$frame->data}\n";
+             echo "Message: {$frame->data}\n";
             // $ws->push($frame->fd, "server: {$frame->data}");
             // var_dump($ws->connection_info($frame->fd));
             //fd绑定客户端传过来的标识uid
             //$ws->bind($frame->fd, $frame->data);
         });
-        $this->ws->on('request', function ($request, $response) {
-            // 接收http请求从post获取参数
-            // 获取所有连接的客户端，验证uid给指定用户推送消息
-            // token验证推送来源，避免恶意访问
-            $clients = $this->ws->getClientList();
-            $clientId = [];
-            foreach ($clients as $value) {
-                $clientInfo = $this->ws->connection_info($value);
-                if (array_key_exists('uid', $clientInfo) && $clientInfo['uid'] == $request->post['s_id']) {
-                    $clientId[] = $value;
-                }
-            }
-            if (!empty($clientId)) {
-                foreach ($clientId as $v) {
-                    $this->ws->push($v, $request->post['info']);
-                }
-            }
-        });
+//        $this->ws->on('request', function ($request, $response) {
+//            // 接收http请求从post获取参数
+//            // 获取所有连接的客户端，验证uid给指定用户推送消息
+//            // token验证推送来源，避免恶意访问
+//            $clients = $this->ws->getClientList();
+//            $clientId = [];
+//            foreach ($clients as $value) {
+//                $clientInfo = $this->ws->connection_info($value);
+//                if (array_key_exists('uid', $clientInfo) && $clientInfo['uid'] == $request->post['s_id']) {
+//                    $clientId[] = $value;
+//                }
+//            }
+//            if (!empty($clientId)) {
+//                foreach ($clientId as $v) {
+//                    $this->ws->push($v, $request->post['info']);
+//                }
+//            }
+//        });
         //监听WebSocket连接关闭事件
         $this->ws->on('close', function ($ws, $fd) {
             echo "client:{$fd} is closed\n";
