@@ -21,4 +21,8 @@ class IndexController extends Controller
     public function index(){
         return view('index');
     }
+
+    public function swoole(){
+        echo "测试";
+    }
 }

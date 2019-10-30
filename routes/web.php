@@ -41,6 +41,11 @@ Route::get('/contact', 'Index\IndexController@index');
 
 
 
+Route::get('/swoole', 'Index\IndexController@swoole');
+
+
+
+
 
 
 
