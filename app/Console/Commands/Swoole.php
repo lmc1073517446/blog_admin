@@ -72,11 +72,11 @@ class Swoole extends Command
             // token验证推送来源，避免恶意访问
             echo '222';
             $clients = $this->ws->getClientList();
-            $clientId = [];
+            $clients = array_pop($clients);
             echo json_encode($clients);
-//            foreach ($clients as $value) {
-//                $this->ws->push($value, 'sdfd');
-//            }
+            foreach ($clients as $value) {
+                $this->ws->push($value, 'send success!!!!');
+            }
         });
         //监听WebSocket连接关闭事件
         $this->ws->on('close', function ($ws, $fd) {
