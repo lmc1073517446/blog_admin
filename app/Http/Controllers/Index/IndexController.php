@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Index;
 
 use App\Http\Controllers\Controller;
+use swoole_client;
 
 class IndexController extends Controller
 {
@@ -23,7 +24,16 @@ class IndexController extends Controller
     }
 
     public function swoole(){
-        $ws = new \swoole_websocket_server("0.0.0.0", 9502);
-        $ws->push(1, "asfafaf");
+        $client = new swoole_client(SWOOLE_SOCK_TCP);
+        //连接到服务器
+        if (!$client->connect('127.0.0.1', 9502, 0.5))
+        {
+            die("connect failed.");
+        }
+        //向服务器发送数据
+        if (!$client->send("hello world"))
+        {
+            echo '发送失败';
+        }
     }
 }
