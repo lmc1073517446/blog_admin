@@ -70,6 +70,7 @@ class Swoole extends Command
             // 接收http请求从post获取参数  $request->post['info']
             // 获取所有连接的客户端，验证uid给指定用户推送消息
             // token验证推送来源，避免恶意访问
+            echo '222';
             $clients = $this->ws->getClientList();
             $clientId = [];
             foreach ($clients as $value) {
