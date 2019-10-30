@@ -24,13 +24,28 @@ class IndexController extends Controller
     }
 
     public function swoole(){
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, "http://127.0.0.1:9502");
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($curl, CURLOPT_HEADER, 1);
-        curl_setopt($curl, CURLOPT_POST, 1);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, ['info'=>'ahhhhhhh']);
-        curl_exec($curl);
-        curl_close($curl);
+//        $curl = curl_init();
+//        curl_setopt($curl, CURLOPT_URL, "http://127.0.0.1:9502");
+//        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+//        curl_setopt($curl, CURLOPT_HEADER, 1);
+//        curl_setopt($curl, CURLOPT_POST, 1);
+//        curl_setopt($curl, CURLOPT_POSTFIELDS, ['info'=>'ahhhhhhh']);
+//        curl_exec($curl);
+//        curl_close($curl);
+
+        $client = new swoole_client(SWOOLE_SOCK_TCP);
+        //连接到服务器
+        if (!$client->connect('127.0.0.1', 9502, 0.5))
+        {
+            die("connect failed.");
+        }
+        //向服务器发送数据
+        if (!$client->send("service  send  message"))
+        {
+            echo '发送失败';
+        }else
+        {
+            echo "发送成功";
+        }
     }
 }
