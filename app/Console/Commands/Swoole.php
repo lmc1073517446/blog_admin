@@ -71,7 +71,6 @@ class Swoole extends Command
             //echo json_encode($clients);
             foreach ($clients as $value) {
                 if($value != $end){
-                    echo $value;
                     $this->ws->push($value, 'send success!!!!');
                 }
             }
@@ -87,7 +86,6 @@ class Swoole extends Command
             //echo json_encode($clients);
             foreach ($clients as $value) {
                 if($value != $end){
-                    echo $value;
                     $this->ws->push($value, 'send success!!!!');
                 }
             }
