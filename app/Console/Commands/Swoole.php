@@ -74,9 +74,9 @@ class Swoole extends Command
             $clients = $this->ws->getClientList();
             $clientId = [];
             echo json_encode($clients);
-            foreach ($clients as $value) {
-                $this->ws->push($value, 'sdfd');
-            }
+//            foreach ($clients as $value) {
+//                $this->ws->push($value, 'sdfd');
+//            }
         });
         //监听WebSocket连接关闭事件
         $this->ws->on('close', function ($ws, $fd) {
