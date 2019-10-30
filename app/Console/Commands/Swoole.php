@@ -72,7 +72,7 @@ class Swoole extends Command
             // token验证推送来源，避免恶意访问
             echo '222';
             $clients = $this->ws->getClientList();
-            $clients = array_pop($clients);
+            //$clients = array_pop($clients);
             echo json_encode($clients);
             foreach ($clients as $value) {
                 $this->ws->push($value, 'send success!!!!');
