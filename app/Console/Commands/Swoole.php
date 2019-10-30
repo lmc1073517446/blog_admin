@@ -59,7 +59,7 @@ class Swoole extends Command
              $ws->push($request->fd, "hello, welcome\n");
         });
         //监听WebSocket消息事件
-        $this->ws->on('receive', function ($ws, $frame) {
+        $this->ws->on('message', function ($ws, $frame) {
              echo "Message: {$frame->data}\n";
             // $ws->push($frame->fd, "server: {$frame->data}");
             // var_dump($ws->connection_info($frame->fd));
