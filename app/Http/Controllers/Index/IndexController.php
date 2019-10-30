@@ -35,17 +35,11 @@ class IndexController extends Controller
 
         $client = new swoole_client(SWOOLE_SOCK_TCP);
         //连接到服务器
-        if (!$client->connect('127.0.0.1', 9502, 0.5))
-        {
-            die("connect failed.");
+        if (!$client->connect('127.0.0.1', 9501, -1)) {
+            exit("connect failed. Error: {$client->errCode}\n");
         }
-        //向服务器发送数据
-        if (!$client->send("service  send  message"))
-        {
-            echo '发送失败';
-        }else
-        {
-            echo "发送成功";
-        }
+        $client->send("hello world\n");
+        echo $client->recv();
+        $client->close();
     }
 }
