@@ -73,10 +73,11 @@ class Swoole extends Command
             echo '222';
             $clients = $this->ws->getClientList();
             $end = end($clients);
+            echo $end;
             //echo json_encode($clients);
             foreach ($clients as $value) {
                 if($value !=$end){
-                    $this->ws->push($value, 'send success!!!!');
+                   // $this->ws->push($value, 'send success!!!!');
                 }
             }
         });
