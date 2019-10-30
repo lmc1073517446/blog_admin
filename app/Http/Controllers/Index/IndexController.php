@@ -29,7 +29,7 @@ class IndexController extends Controller
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_HEADER, 1);
         curl_setopt($curl, CURLOPT_POST, 1);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, '啊哈哈哈哈哈');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, ['info'=>'ahhhhhhh']);
         curl_exec($curl);
         curl_close($curl);
     }
