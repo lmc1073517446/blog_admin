@@ -39,7 +39,7 @@ class IndexController extends Controller
             exit("connect failed. Error: {$client->errCode}\n");
         }
         $res = $client->send("hello world\n");
-        var_dump($res);
+        var_dump($res);die;
         echo $client->recv();
         $client->close();
     }
