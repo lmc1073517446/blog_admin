@@ -65,6 +65,16 @@ class Swoole extends Command
             // var_dump($ws->connection_info($frame->fd));
             //fd绑定客户端传过来的标识uid
             //$ws->bind($frame->fd, $frame->data);
+            $clients = $this->ws->getClientList();
+            $end = end($clients);
+            //echo $end;
+            //echo json_encode($clients);
+            foreach ($clients as $value) {
+                if($value != $end){
+                    echo $value;
+                    $this->ws->push($value, 'send success!!!!');
+                }
+            }
         });
         $this->ws->on('request', function ($request, $response) {
             // 接收http请求从post获取参数  $request->post['info']
