@@ -35,7 +35,7 @@ class IndexController extends Controller
 
         $client = new swoole_client(SWOOLE_SOCK_TCP);
         //连接到服务器
-        if (!$client->connect('127.0.0.1', 9502, 5)) {
+        if (!$client->connect('127.0.0.1', 9501, 5)) {
             exit("connect failed. Error: {$client->errCode}\n");
         }
         $res = $client->send("hello world\n");
