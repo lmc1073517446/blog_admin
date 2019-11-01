@@ -50,23 +50,26 @@ class Swoole extends Command
 
     }
     public function start(){
-        $client = new \swoole_server("127.0.0.1", 9501, SWOOLE_BASE, SWOOLE_SOCK_TCP);
+        //创建Server对象，监听 127.0.0.1:9501端口
+        $serv = new Swoole\Server("127.0.0.1", 9501);
 
-        $client->on("connect", function(Client $cli) {
-            $cli->send("GET / HTTP/1.1\r\n\r\n");
+        //监听连接进入事件
+        $serv->on('Connect', function ($serv, $fd) {
+            echo "Client: Connect.\n";
         });
-        $client->on("receive", function(Client $cli, $data){
-            echo "Receive: $data";
-            $cli->send(str_repeat('A', 100)."\n");
-            sleep(1);
+
+        //监听数据接收事件
+        $serv->on('Receive', function ($serv, $fd, $from_id, $data) {
+            $serv->send($fd, "Server: ".$data);
         });
-        $client->on("error", function(Client $cli){
-            echo "error\n";
+
+        //监听连接关闭事件
+        $serv->on('Close', function ($serv, $fd) {
+            echo "Client: Close.\n";
         });
-        $client->on("close", function(Client $cli){
-            echo "Connection close\n";
-        });
-        $client->start();
+
+        //启动服务器
+        $serv->start();
 
     }
 }
