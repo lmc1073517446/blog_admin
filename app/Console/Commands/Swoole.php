@@ -50,7 +50,7 @@ class Swoole extends Command
 
     }
     public function start(){
-        $client = new swoole_server("127.0.0.1", 9501, SWOOLE_BASE, SWOOLE_SOCK_TCP);
+        $client = new \swoole_server("127.0.0.1", 9501, SWOOLE_BASE, SWOOLE_SOCK_TCP);
 
         $client->on("connect", function(Client $cli) {
             $cli->send("GET / HTTP/1.1\r\n\r\n");
