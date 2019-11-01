@@ -50,51 +50,23 @@ class Swoole extends Command
 
     }
     public function start(){
-        //创建websocket服务器对象，监听0.0.0.0:9502端口
-        $this->ws = new \swoole_websocket_server("0.0.0.0", 9502);
+        $client = new swoole_server("127.0.0.1", 9501, SWOOLE_BASE, SWOOLE_SOCK_TCP);
 
-        //监听WebSocket连接打开事件
-        $this->ws->on('open', function ($ws, $request) {
-            var_dump($request->fd . "success");
-             $ws->push($request->fd, "hello, welcome\n");
+        $client->on("connect", function(Client $cli) {
+            $cli->send("GET / HTTP/1.1\r\n\r\n");
         });
-        //监听WebSocket消息事件
-        $this->ws->on('message', function ($ws, $frame) {
-             echo "Message: {$frame->data}\n";
-            // $ws->push($frame->fd, "server: {$frame->data}");
-            // var_dump($ws->connection_info($frame->fd));
-            //fd绑定客户端传过来的标识uid
-            //$ws->bind($frame->fd, $frame->data);
-            $clients = $this->ws->getClientList();
-            $end = end($clients);
-            //echo $end;
-            //echo json_encode($clients);
-            foreach ($clients as $value) {
-                if($value != $end){
-                    $this->ws->push($value, 'send success!!!!');
-                }
-            }
+        $client->on("receive", function(Client $cli, $data){
+            echo "Receive: $data";
+            $cli->send(str_repeat('A', 100)."\n");
+            sleep(1);
         });
-        $this->ws->on('request', function ($request, $response) {
-            // 接收http请求从post获取参数  $request->post['info']
-            // 获取所有连接的客户端，验证uid给指定用户推送消息
-            // token验证推送来源，避免恶意访问
-            //echo '222';
-            $clients = $this->ws->getClientList();
-            $end = end($clients);
-            //echo $end;
-            //echo json_encode($clients);
-            foreach ($clients as $value) {
-                if($value != $end){
-                    $this->ws->push($value, 'send success!!!!');
-                }
-            }
+        $client->on("error", function(Client $cli){
+            echo "error\n";
         });
-        //监听WebSocket连接关闭事件
-        $this->ws->on('close', function ($ws, $fd) {
-            echo "client:{$fd} is closed\n";
+        $client->on("close", function(Client $cli){
+            echo "Connection close\n";
         });
+        $client->start();
 
-        $this->ws->start();
     }
 }
