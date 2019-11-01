@@ -51,7 +51,7 @@ class Swoole extends Command
     }
     public function start(){
         //创建Server对象，监听 127.0.0.1:9501端口
-        $serv = new Swoole\Server("127.0.0.1", 9501);
+        $serv = new \swoole_server("127.0.0.1", 9501);
 
         //监听连接进入事件
         $serv->on('Connect', function ($serv, $fd) {
