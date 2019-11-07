@@ -57,7 +57,7 @@
 
                     <div class="logo left">
                         <a href="/" class="brand-logo">
-                            <img src="/img/logo.png" style="width:93px;height:35px;" alt="brand-logo">
+                            <img src="{{asset(_STATIC_FILES_.'/img/logo.png')}}" style="width:93px;height:35px;" alt="brand-logo">
                         </a>
                     </div>
                     <!-- logo -->
