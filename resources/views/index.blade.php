@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <!-- saved from url=(0028)https://hacpai.com/halt.html -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta name="description" content="MC的博客！">
     <meta name="keywords" content="博客,个人博客,MC个人博客,满成的个人博客,PHP,Laravel,Lara博客" />
     <meta name="author" content="limanc.com">
