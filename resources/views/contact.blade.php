@@ -74,7 +74,7 @@
                         </div>
                         <!-- colsm6 -->
                         <div class="col m6 s12">
-                            <img src="/img/me.JPG">
+                            <img src="{{asset(_STATIC_FILES_.'/img/me.JPG')}}">
                         </div>
                         <!-- colsm6 -->
                     </div>
