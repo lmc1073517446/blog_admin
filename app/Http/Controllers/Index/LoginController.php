@@ -95,7 +95,8 @@ class LoginController extends Controller
         $headers[] = "User-Agent: MC 博客";
         $res = curlGet($url, $headers);
         echo "<pre>";
-        print_r($res['login']);
+        echo "login success!!!";
+        print_r($res);
     }
 
 }
