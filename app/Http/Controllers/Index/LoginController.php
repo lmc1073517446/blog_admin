@@ -66,4 +66,19 @@ class LoginController extends Controller
     public function slideCode(){
         echo 233;die;
     }
+    /**
+     * github授权
+     * */
+    public function ghAuthorize(){
+        header('location:https://github.com/login/oauth/authorize?client_id=689780fd178575437e3f');
+    }
+
+    /**
+     * github登录回调
+     * */
+    public function ghLogin(Request $request){
+        $inputs = $request->all();
+        $url = "https://github.com/login/oauth/access_token";
+    }
+
 }

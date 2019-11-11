@@ -43,6 +43,12 @@ Route::get('/contact', 'Index\IndexController@index');
 
 Route::get('/swoole', 'Index\IndexController@swoole');
 
+//登录
+Route::get('/github-authorize', 'Index\LoginController@ghAuthorize');
+Route::get('/github-login', 'Index\LoginController@ghLogin');
+
+
+
 
 
 

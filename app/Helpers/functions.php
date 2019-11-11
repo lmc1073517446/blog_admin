@@ -48,3 +48,49 @@ function getArticleLabel(){
     return config('constants.ARTICLE_TYPE');
 }
 
+
+/**
+ * get 请求
+ * */
+function curlGet($url){
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    $output = curl_exec($ch);
+    curl_close($ch);
+    $output = json_decode($output,true);
+    return $output;
+}
+
+/**
+ * post 请求
+ * */
+function curlPost($url, $data){
+    //初使化init方法
+    $ch = curl_init();
+    //指定URL
+    curl_setopt($ch, CURLOPT_URL, $url);
+    //设定请求后返回结果
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    //声明使用POST方式来进行发送
+    curl_setopt($ch, CURLOPT_POST, 1);
+    //发送什么数据呢
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+    //忽略证书
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+    //忽略header头信息
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    //设置超时时间
+    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+    //发送请求
+    $output = curl_exec($ch);
+    //关闭curl
+    curl_close($ch);
+    //返回数据
+    return $output;
+}
+
+
