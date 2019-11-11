@@ -17,16 +17,16 @@ class RecordTourist
      */
     public function handle($request, Closure $next)
     {
-        //记录来访
-        $visit = [
-            'add_time' => date('Y-m-d H:i:s'),
-            'last_time' => date('Y-m-d H:i:s'),
-            'ip' => $request->getClientIp(),
-            'region' => \GeoIP::getLocation($request->getClientIp())->city,
-            'url' => $request->path(),
-        ];
-        $visitModel = new Tourist();
-        $visitModel->insert($visit);
+//        //记录来访
+//        $visit = [
+//            'add_time' => date('Y-m-d H:i:s'),
+//            'last_time' => date('Y-m-d H:i:s'),
+//            'ip' => $request->getClientIp(),
+//            'region' => \GeoIP::getLocation($request->getClientIp())->city,
+//            'url' => $request->path(),
+//        ];
+//        $visitModel = new Tourist();
+//        $visitModel->insert($visit);
         return $next($request);
     }
 }

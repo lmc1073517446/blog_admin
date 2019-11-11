@@ -78,14 +78,14 @@
                             {{--</li>--}}
                             {{--<li><a href="single-blog.html">BLOG SINGLE</a></li>--}}
 
-                            <li @if($header['current_page']=='contact')class="active"@endif><a href="/contact.html">关于我</a></li>
-                            <li class="dropdown">
-                                <a href="#">登录 <i class="icofont icofont-simple-down"></i></a>
-                                <ul class="dropdown-container">
-                                    <li><a href="/github-authorize">github 登录</a></li>
-                                </ul>
-                            <!-- /.dropdown-container -->
-                            </li>
+                            {{--<li @if($header['current_page']=='contact')class="active"@endif><a href="/contact.html">关于我</a></li>--}}
+                            {{--<li class="dropdown">--}}
+                                {{--<a href="#">登录 <i class="icofont icofont-simple-down"></i></a>--}}
+                                {{--<ul class="dropdown-container">--}}
+                                    {{--<li><a href="/github-authorize">github 登录</a></li>--}}
+                                {{--</ul>--}}
+                            {{--<!-- /.dropdown-container -->--}}
+                            {{--</li>--}}
                         </ul>
                         <!-- /.main-menu -->
 
@@ -108,8 +108,8 @@
                     </div>
                     <!-- main-menu -->
 
-                    <a href="#" class="search-trigger right">
-                        <i class="icofont icofont-search"></i>
+                    <a href="https://github.com/login/oauth/authorize?client_id=689780fd178575437e3f" class="search-trigger right">
+                        登录
                     </a>
                     <!-- search -->
                     <div id="myNav" class="overlay">

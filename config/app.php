@@ -177,8 +177,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Torann\GeoIP\GeoIPServiceProvider::class,
-        SwooleTW\Http\LaravelServiceProvider::class,
+        //Torann\GeoIP\GeoIPServiceProvider::class,
+        //SwooleTW\Http\LaravelServiceProvider::class,
 
     ],
 
@@ -229,7 +229,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'EnjellyDown' => HavenShen\EnjellyDown\Facades\EnjellyDown::class,
-        'GeoIP' => Torann\GeoIP\GeoIPFacade::class,
+       // 'GeoIP' => Torann\GeoIP\GeoIPFacade::class,
 
     ],
 

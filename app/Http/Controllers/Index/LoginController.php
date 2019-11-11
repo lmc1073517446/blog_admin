@@ -70,7 +70,8 @@ class LoginController extends Controller
      * github授权
      * */
     public function ghAuthorize(){
-        header('location:https://github.com/login/oauth/authorize?client_id=689780fd178575437e3f');
+        //header('https://github.com/login/oauth/authorize?client_id=689780fd178575437e3f');
+        //redirect("https://github.com/login/oauth/authorize?client_id=689780fd178575437e3f");
     }
 
     /**
@@ -79,6 +80,17 @@ class LoginController extends Controller
     public function ghLogin(Request $request){
         $inputs = $request->all();
         $url = "https://github.com/login/oauth/access_token";
+        $data= [
+            'client_id' => '689780fd178575437e3f',
+            'client_secret'=>'bcdecb44b223e10002e6abf25f9ce209152519ab',
+            'code' => $inputs['code']
+        ];
+        $res = curlPost($url, $data);
+        parse_str($res, $accessToken);
+        print_r($accessToken['access_token']);
+        $url = "https://api.github.com/user?access_token=".$accessToken['access_token'];
+        $res = curlGet($url);
+        print_r($res);
     }
 
 }
