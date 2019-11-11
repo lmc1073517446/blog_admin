@@ -89,7 +89,9 @@ class LoginController extends Controller
         parse_str($res, $accessToken);
         print_r($accessToken['access_token']);
         $url = "https://api.github.com/user?access_token=".$accessToken['access_token'];
-        $res = curlGet($url);
+        $headers[] = 'Authorization: token '.$accessToken['access_token'];
+        $headers[] = "User-Agent: MC 博客";
+        $res = curlGet($url, $headers);
         print_r($res);
     }
 
