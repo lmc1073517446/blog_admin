@@ -37,9 +37,9 @@ $(".button-collapse").sideNav();
 
 
 // main-searchbox - Start --------------------------------------------------
-$( ".search-trigger" ).on("click", function() {
-  $('#myNav').css( "height", "100%" );
-});
+//$( ".search-trigger" ).on("click", function() {
+//  $('#myNav').css( "height", "100%" );
+//});
 $( ".closebtn" ).on("click", function() {
   $('#myNav').css( "height", "0%" );
 });

@@ -7,6 +7,7 @@ use PhpOffice\PhpWord\TemplateProcessor;
 use Illuminate\Http\Request;
 use Mail;
 use Illuminate\Support\Facades\DB;
+use app\Libraries\Github;
 
 
 class LoginController extends Controller
@@ -70,6 +71,8 @@ class LoginController extends Controller
      * github授权
      * */
     public function ghAuthorize(){
+        $config = config('social.github');
+        $git = new Github($config['clientId'],$config['clientSecret']);
         //header('https://github.com/login/oauth/authorize?client_id=689780fd178575437e3f');
         //redirect("https://github.com/login/oauth/authorize?client_id=689780fd178575437e3f");
     }
@@ -87,12 +90,12 @@ class LoginController extends Controller
         ];
         $res = curlPost($url, $data);
         parse_str($res, $accessToken);
-        print_r($accessToken['access_token']);
         $url = "https://api.github.com/user?access_token=".$accessToken['access_token'];
         $headers[] = 'Authorization: token '.$accessToken['access_token'];
         $headers[] = "User-Agent: MC 博客";
         $res = curlGet($url, $headers);
-        print_r($res);
+        echo "<pre>";
+        print_r($res['login']);
     }
 
 }
