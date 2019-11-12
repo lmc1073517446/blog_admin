@@ -56,12 +56,6 @@ class ArticlesController extends Controller
      * @params int id 文章id
      * */
     public function blogDetail($id, Request $request){
-        //TDK
-        $header['title'] = "文章详情-MC的博客";
-        $header['keywords'] = "";
-        $header['description'] = "";
-        $header['current_page'] = 'blog_list';
-
         //获取当前文章内容
         $article = $this->articleService->getBlogDetail($id);
         $request->session()->flash('articleContent_'.$id, $article);//将数据闪存到session
@@ -77,6 +71,12 @@ class ArticlesController extends Controller
             'sort' => 'desc',
             'size' => 10,
         ]);
+
+        //TDK
+        $header['title'] = "文章详情-MC的博客";
+        $header['keywords'] = $article['title'];
+        $header['description'] = $article['title'];
+        $header['current_page'] = 'blog_list';
 
         return view('blog_detail',[
             'header'=> $header,
