@@ -39,7 +39,7 @@ class ArticlesController extends Controller
         $header['keywords'] = "博客,个人博客,MC个人博客,满成的个人博客,PHP,Laravel,Lara博客";
         $header['description'] = "";
         $header['current_page'] = 'blog_list';
-        $user = $request->session()->get('user');
+        $user = session('user');
         print_r($user);
 
 
