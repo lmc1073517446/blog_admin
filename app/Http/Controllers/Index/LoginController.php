@@ -102,6 +102,7 @@ class LoginController extends Controller
             $userInfo = [
                 'name' => $res['login'],
                 'github_ident' => $res['login'],
+                'avatar' => '/img/vistor_'.rand(0,6).'.jpg',
                 'add_time' => date('Y-m-d H:i:s'),
                 'last_login_time' =>date('Y-m-d H:i:s')
             ];
