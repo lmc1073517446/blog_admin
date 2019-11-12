@@ -111,6 +111,8 @@ class LoginController extends Controller
         $this->usersModel->toSave([ 'condition' => ['id'=>$userInfo['id']]],
             ['last_login_time'=>date('Y-m-d H:i:s')]);
 
+        $request->session()->put('user', $userInfo);
+
         echo "已发送邮件，请激活";
 
     }
