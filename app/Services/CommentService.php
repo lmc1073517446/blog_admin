@@ -17,13 +17,13 @@ class CommentService
      * @params $id int 文章id
      * */
     public function articleCommentLists($id){
-//        $comment_list = $this->commentModel->getList([
-//            'condition' => ['a_id'=>$id],
-//            'isAsArray' => true
-//        ]);
-        $comment_list = $this->commentModel->where('a_id', $id)->get()->toArray();
-        echo "<pre>";
-        print_r($comment_list);die;
+        $comment_list = $this->commentModel->getList([
+            'condition' => ['a_id'=>$id],
+            'isAsArray' => true
+        ]);
+//        $comment_list = $this->commentModel->where('a_id', $id)->get()->toArray();
+//        echo "<pre>";
+//        print_r($comment_list);die;
         $comment_list = object_array($comment_list);
         $master_comment = [];
         foreach($comment_list as $key=>$val){
