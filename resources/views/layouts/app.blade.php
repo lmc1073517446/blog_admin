@@ -113,7 +113,7 @@
                         </a>
                     @else
                         <a href="javascript:void(0)" class="search-trigger right">
-                            <img src="{{asset(_STATIC_FILES_.session('user')['avatar'])}}">
+                            <img style="width:50px;height:50px;border-radius:100%;margin-top:-16px;" src="{{asset(_STATIC_FILES_.session('user')['avatar'])}}">
                         </a>
                     @endif
                     <!-- search -->
