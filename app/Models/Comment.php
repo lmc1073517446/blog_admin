@@ -27,6 +27,12 @@ class Comment extends BasicModel
     protected $primaryKey = 'ID';
 
 
-
+    /**
+     * 获得与用户关联的电话记录。
+     */
+    public function avatar()
+    {
+        return $this->hasOne('App\Models\Users', 'id', 'comm_uid');
+    }
 
 }
