@@ -8,12 +8,13 @@ use Illuminate\Http\Request;
 use Mail;
 use Illuminate\Support\Facades\DB;
 use app\Libraries\Github;
+use App\Models\Users;
+
 
 
 class LoginController extends Controller
 {
-
-
+    public $usersModel;
     /**
      * Create a new controller instance.
      *
@@ -21,6 +22,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        $this->usersModel = new Users();
     }
 
     public function login(Request $request){
@@ -94,9 +96,22 @@ class LoginController extends Controller
         $headers[] = 'Authorization: token '.$accessToken['access_token'];
         $headers[] = "User-Agent: MC 博客";
         $res = curlGet($url, $headers);
-        echo "<pre>";
-        echo "login success!!!";
-        print_r($res);
+        $userInfo = $this->usersModel->getOne([
+            'condition' => ['github_ident'=>$res['login']]
+        ]);
+        if(empty($userInfo)){
+            $userInfo = [
+                'name' => $res['login'],
+                'github_ident' => $res['login'],
+                'add_time' => date('Y-m-d H:i:s'),
+            ];
+            $userInfo['id'] = $this->usersModel->addOne($userInfo);
+        }
+        $this->usersModel->toSave([ 'condition' => ['id'=>$userInfo['id']]],
+            ['last_login_time'=>date('Y-m-d H:i:s')]);
+
+        echo "已发送邮件，请激活";
+
     }
 
 }
