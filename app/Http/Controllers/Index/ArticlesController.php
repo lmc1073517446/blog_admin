@@ -73,7 +73,7 @@ class ArticlesController extends Controller
         ]);
 
         //TDK
-        $header['title'] = "文章详情-MC的博客";
+        $header['title'] = $article['title']."-MC的博客";
         $header['keywords'] = $article['title'];
         $header['description'] = $article['title'];
         $header['current_page'] = 'blog_list';
