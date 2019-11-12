@@ -84,18 +84,17 @@ class LoginController extends Controller
      * */
     public function ghLogin(Request $request){
         $inputs = $request->all();
-        $url = "https://github.com/login/oauth/access_token";
-        $data= [
-            'client_id' => '689780fd178575437e3f',
-            'client_secret'=>'bcdecb44b223e10002e6abf25f9ce209152519ab',
-            'code' => $inputs['code']
-        ];
-        $res = curlPost($url, $data);
-        parse_str($res, $accessToken);
-        $url = "https://api.github.com/user?access_token=".$accessToken['access_token'];
-        $headers[] = 'Authorization: token '.$accessToken['access_token'];
-        $headers[] = "User-Agent: MC 博客";
-        $res = curlGet($url, $headers);
+        $config = config('social.github');
+        $git = new Github($config['clientId'],$config['clientSecret']);
+
+        $res = $git->getAccessToken($inputs['code']);
+        if(is_numeric($res)){
+            echo "fail";
+        }
+        $res = $git->getUserInfo($res);
+        if(!isset($res['login'])){
+            echo "fail";
+        }
         $userInfo = $this->usersModel->getOne([
             'condition' => ['github_ident'=>$res['login']]
         ]);

@@ -30,4 +30,13 @@ class Github{
         return $accessToken['access_token'];
     }
 
+    public function getUserInfo($access_token){
+        $url = "https://api.github.com/user?access_token=".$access_token;
+        $headers[] = 'Authorization: token '.$access_token;
+        $headers[] = "User-Agent: MC 博客";
+        $res = curlGet($url, $headers);
+
+        return $res;
+    }
+
 }
