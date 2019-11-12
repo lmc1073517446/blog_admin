@@ -89,11 +89,11 @@ class LoginController extends Controller
 
         $res = $git->getAccessToken($inputs['code']);
         if(is_numeric($res)){
-            echo "fail";
+            echo "fail";die;
         }
         $res = $git->getUserInfo($res);
         if(!isset($res['login'])){
-            echo "fail";
+            echo "fail";die;
         }
         $userInfo = $this->usersModel->getOne([
             'condition' => ['github_ident'=>$res['login']]
