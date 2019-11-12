@@ -43,9 +43,8 @@ class CommentService
      * */
     public function toComment($inputs){
         //生成游客名称
-        $visitor_name = getRandomStr(10);
         $data = [
-            'user_name' => $visitor_name,//评论人用户名
+            'user_name' => $inputs['user_name'],//评论人用户名
             'content' => $inputs['content'],//评论内容
             'comm_uid' => 0,//评论人uid
             'pid' => $inputs['pid'],//回复的最顶级评论id

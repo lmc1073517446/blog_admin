@@ -49,7 +49,9 @@ class CommentsController extends Controller
             return ['message'=>$validator->errors()->all()[0],'code'=>40001];
         }
 
+        $inputs['user_name'] = session('user')['name'];
         $data = $this->commentService->toComment($inputs);
+        $data['avatar'] = asset(_STATIC_FILES_).session('user')['avatar'];
         if($data['id']){
             return ['message'=>'成功','code'=>200, 'data'=> $data];
         }

@@ -322,7 +322,7 @@
                         var html =
                             '<div class="comment w100dt mb-30 comment-id-'+e.data.id+'">' +
                             '<div class="ppic left">' +
-                            '<img src="/img/vistor_'+e.data.id%7+'.jpg" alt="Image">' +
+                            '<img src="'+e.data.avatar+'" alt="Image">' +
                         '</div>' +
                         '<div class="pname">' +
                         '<h4 class="mb-10">' +
@@ -352,9 +352,10 @@
                 var aid = $(this).attr('aid');
                 var master_slave = $(this).attr('master-slave');
                 var top_level = $(this).attr('top-level');
+                var avatar = $('.search-trigger').attr('src');
                 var html =
                     '<div class="cmnt-reply comment w100dt">' +
-                        '<div class="ppic left"><img src="/img/img3.png" alt="Image"></div>' +
+                        '<div class="ppic left"><img src="'+ avatar +'" alt="Image"></div>' +
                         '<div class="pname">' +
                             '<h4 class="mb-10">@<a href="#" class="card-title l-blue">'+reply_user_name+'</a></h4>' +
                             '<p class="comment-text mb-10">' +
@@ -394,7 +395,7 @@
                         var html =
                             '<div class="cmnt-reply comment w100dt">' +
                                 '<div class="ppic left">' +
-                                    '<img src="/img/vistor_'+e.data.id%7+'.jpg" alt="Image">' +
+                                    '<img src="'+e.data.avatar+'" alt="Image">' +
                                 '</div>' +
                                 '<div class="pname">' +
                                     '<h4 class="mb-10">' +
