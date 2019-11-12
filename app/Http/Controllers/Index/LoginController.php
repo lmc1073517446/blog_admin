@@ -103,6 +103,7 @@ class LoginController extends Controller
                 'name' => $res['login'],
                 'github_ident' => $res['login'],
                 'add_time' => date('Y-m-d H:i:s'),
+                'last_login_time' =>date('Y-m-d H:i:s')
             ];
             $userInfo['id'] = $this->usersModel->addOne($userInfo);
         }
