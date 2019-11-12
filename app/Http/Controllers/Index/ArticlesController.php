@@ -40,9 +40,6 @@ class ArticlesController extends Controller
         $header['description'] = "";
         $header['current_page'] = 'blog_list';
         $user = session('user');
-        print_r($user);
-
-
         //获取文章列表数据
         $articles = $this->articleService->getPageBlogList($page, $type);
         //热门文章列表

@@ -107,10 +107,15 @@
                         </ul>
                     </div>
                     <!-- main-menu -->
-
-                    <a href="https://github.com/login/oauth/authorize?client_id=689780fd178575437e3f" class="search-trigger right">
-                        登录
-                    </a>
+                    @if(!session('user'))
+                        <a href="https://github.com/login/oauth/authorize?client_id=689780fd178575437e3f" class="search-trigger right">
+                            登录
+                        </a>
+                    @else
+                        <a href="javascript:void(0)" class="search-trigger right">
+                            <img src="{{asset(_STATIC_FILES_.session('user')['avatar'])}}">
+                        </a>
+                    @endif
                     <!-- search -->
                     <div id="myNav" class="overlay">
                         <a href="javascript:void(0)" class="closebtn">&times;</a>
