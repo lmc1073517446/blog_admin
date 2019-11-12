@@ -113,7 +113,9 @@ class LoginController extends Controller
 
         $request->session()->put('user', $userInfo);
 
-        echo "已发送邮件，请激活";
+        return redirect('/blog.html');
+
+        //echo "已发送邮件，请激活";
 
     }
 
