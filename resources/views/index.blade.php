@@ -177,7 +177,7 @@
 
     </div>
 </div>
-<span class="copyright">&copy; 2019&nbsp<a href="/blog.html">MC 的博客</a></span>
+<span class="copyright">Copyright © www.limanc.cn 版权所有. 京ICP备19049714号</span>
 <script src="{{asset(_STATIC_FILES_.'/index/js/Seffects.js')}}" type="text/javascript"></script>
 
 <script src="{{asset(_STATIC_FILES_.'/index/js/jquery.min.js')}}"></script>

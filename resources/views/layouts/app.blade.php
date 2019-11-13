@@ -171,7 +171,8 @@
 
         <p class="center-align">
             <i class="icofont icofont-heart-alt l-blue"></i>
-            Copyright &copy; 2018.Company name All rights reserved.<a target="_blank" href="http://www.sucaihuo.com/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
+
+            Copyright © www.limanc.cn 版权所有. 京ICP备19049714号
         </p>
 
     </div>
