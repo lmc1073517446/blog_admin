@@ -76,7 +76,7 @@ class ArticleController extends AdminController
         $form->editormd('content','内容')->rules('required');
         $form->text('author_name', __('作者'))->rules('required');
         $form->number('read_num', __('阅读数量'))->default(0)->rules('required');
-        $form->multipleSelect('label','标签')->options(config('constants.ARTICLE_TYPE'))->rules('required');
+        //$form->multipleSelect('label','标签')->options(config('constants.ARTICLE_TYPE'))->rules('required');
         $form->tags('label');
         $form->number('love_num', __('点赞数'))->default(0)->rules('required');
         $form->number('collect_num', __('收藏数'))->default(0)->rules('required');
