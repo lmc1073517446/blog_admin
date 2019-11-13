@@ -35,7 +35,7 @@ class ArticleController extends AdminController
 
         $grid->column('id', 'ID');
         $grid->column('title', '标题')->display(function ($title) {
-            return "<a href='/blog_detail_".$this->id."'>$title</a>";
+            return "<a href='/blog_detail_".$this->id.".html'>$title</a>";
         });
 //        $grid->column('content', __('Content'));
         $grid->column('author_name', '作者');

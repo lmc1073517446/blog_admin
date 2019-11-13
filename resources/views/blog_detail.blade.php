@@ -59,9 +59,9 @@
                             </p>
 
                             <ul class="tag-list left" style="margin-top:20px;">
-                                @foreach($article->label as $val)
+                                {{--@foreach($article->label as $val)--}}
                                     <li><a href="#!" class="waves-effect">#{{ $article_type[$val] }}</a></li>
-                                @endforeach
+                                {{--@endforeach--}}
                             </ul>
 
                         </div>
