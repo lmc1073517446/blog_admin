@@ -165,7 +165,7 @@
                                 @foreach($comment['slave'] as $slave)
                                     <div class="cmnt-reply comment w100dt">
                                         <div class="ppic left">
-                                            <img src="/img/vistor_{{ $slave['id']%7 }}.jpg" alt="Image">
+                                            <img src="{{asset(_STATIC_FILES_)}}{{ $comment['user']['avatar'] }}" alt="Image">
                                         </div>
                                         <!-- /.ppic -->
                                         <div class="pname">

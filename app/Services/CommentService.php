@@ -42,7 +42,7 @@ class CommentService
         $data = [
             'user_name' => $inputs['user_name'],//评论人用户名
             'content' => $inputs['content'],//评论内容
-            'comm_uid' => 0,//评论人uid
+            'comm_uid' => session('user')['id'],//评论人uid
             'pid' => $inputs['pid'],//回复的最顶级评论id
             'a_id' => $inputs['a_id'],//评论的文章id
             'add_time' => time(),//评论时间
