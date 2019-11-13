@@ -44,7 +44,7 @@
                                         <ul class="post-mate-time left">
                                             <li>
                                                 <p class="hero left">
-                                                    By - <a href="#" class="l-blue">Limancheng</a>
+                                                    By - <a href="#" class="l-blue">{{ $article->author_name }}</a>
                                                 </p>
                                             </li>
                                             <li>
