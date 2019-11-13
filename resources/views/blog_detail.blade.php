@@ -331,7 +331,7 @@
                         '<p class="comment-text mb-10">' + content +
                         '</p>' +
                         '<ul class="post-mate-time left">' +
-                        '<li class="reply"><a href="javascript:void(0)" class="comment-reply" pid="'+pid+'" comment-user-name="'+e.data.user_name+'" aid="'+a_id+'" top-level="'+e.data.id+'" master-slave="'+e.data.id+'">回复</a></li>' +
+                        '<li class="reply"><a href="javascript:void(0)" class="comment-reply" pid="'+pid+'" reply-user-name="'+e.data.user_name+'" aid="'+a_id+'" top-level="'+e.data.id+'" master-slave="'+e.data.id+'">回复</a></li>' +
                         '<li><i class="icofont icofont-ui-calendar"></i>刚刚</li>' +
                         '</ul>' +
                         '</div>' +
@@ -352,7 +352,7 @@
                 var aid = $(this).attr('aid');
                 var master_slave = $(this).attr('master-slave');
                 var top_level = $(this).attr('top-level');
-                var avatar = $('.search-trigger').attr('src');
+                var avatar = $('.search-trigger img').attr('src');
                 var html =
                     '<div class="cmnt-reply comment w100dt">' +
                         '<div class="ppic left"><img src="'+ avatar +'" alt="Image"></div>' +
