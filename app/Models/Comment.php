@@ -30,9 +30,13 @@ class Comment extends BasicModel
     /**
      * 获得与用户关联的电话记录。
      */
-    public function avatar()
-    {
-        return $this->hasOne('App\Models\Users', 'id', 'comm_uid');
+//    public function avatar()
+//    {
+//        return $this->hasOne('App\Models\Users', 'id', 'comm_uid');
+//    }
+
+    public function user() {
+        return $this->belongsTo('App\User','comm_uid','id');
     }
 
 }

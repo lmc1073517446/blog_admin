@@ -136,7 +136,7 @@
                         @foreach($comment_list as $key=>$comment)
                             <div class="comment w100dt mb-30 comment-id-{{ $comment['id'] }}">
                                 <div class="ppic left">
-                                    <img src="/img/vistor_{{ $comment['id']%7 }}.jpg" alt="Image">
+                                    <img src="{{asset(_STATIC_FILES_)}}{{ $comment['user']['avatar'] }}" alt="Image">
                                 </div>
                                 <!-- /.ppic -->
                                 <div class="pname">
@@ -339,10 +339,10 @@
                         $(".comment-content").prepend(html);
                         location.href='#content-start'
                     }else{
-                        alert('评论失败');
+                        alert(e.message);
                     }
                 }).fail(function(e){
-                    alert('评论失败');
+                    alert('操作失败，请稍后再试');
                 });
             })
             //评论回复
@@ -413,10 +413,10 @@
                         $('.comment-id-'+master_slave).append(html);
                         //location.href='#content-start'
                     }else{
-                        alert('评论失败');
+                        alert(e.message);
                     }
                 }).fail(function(e){
-                    alert('评论失败');
+                    alert('操作失败，请稍后再试');
                 });
             })
         })

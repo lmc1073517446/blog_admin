@@ -49,6 +49,10 @@ class CommentsController extends Controller
             return ['message'=>$validator->errors()->all()[0],'code'=>40001];
         }
 
+        if(empty(session('user'))){
+            return ['message'=>'请先登录','code'=>40002];
+        }
+
         $inputs['user_name'] = session('user')['name'];
         $data = $this->commentService->toComment($inputs);
         $data['avatar'] = asset(_STATIC_FILES_).session('user')['avatar'];
