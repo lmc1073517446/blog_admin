@@ -13,14 +13,14 @@ class Article extends BasicModel
 
     public $timestamps = false;
 
-    public function getlabelAttribute($value)
-    {
-        return explode(',', $value);
-    }
-
-    public function setlabelAttribute($value)
-    {
-        $this->attributes['label'] = implode(',', $value);
-    }
+//    public function getlabelAttribute($value)
+//    {
+//        return explode(',', $value);
+//    }
+//
+//    public function setlabelAttribute($value)
+//    {
+//        $this->attributes['label'] = implode(',', $value);
+//    }
 
 }
