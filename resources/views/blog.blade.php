@@ -81,7 +81,7 @@
             <!-- colm8 -->
 
             <div class="col s12 m4 l4">
-                <div class="sidebar-followme w100dt mb-30">
+                <div class="sidebar-followme w100dt mb-30" style="padding-bottom:20px;">
                     <div class="sidebar-title center-align">
                         <h2>文章标签</h2>
                     </div>
