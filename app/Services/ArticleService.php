@@ -29,7 +29,7 @@ class ArticleService
             'whereRaw' => isset($whereRaw)?$whereRaw:'',
             'orderBy' => 'id',
             'sort' => 'desc',
-            'size' => 4,
+            'size' => 12,
             'pageUrl' => 'blog_',
             'page' => $page,
             'params' => isset($params)?$params:[],

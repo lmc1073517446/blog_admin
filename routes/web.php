@@ -20,7 +20,7 @@ Route::get('/', 'Index\IndexController@index');
 
 //文章列表-带排序
 Route::get('/blog_{page?}_{type?}.html', function(App\Http\Controllers\Index\ArticlesController $index, $page=1, $type='1'){
-    return $index->blog($page, $type);
+    return $index->index($page, $type);
 })->where('page','\d+');
 //文章列表-不需要排序
 Route::get('/blog_{page?}.html', function(App\Http\Controllers\Index\ArticlesController $index, $page=1, $order='id', $sort='desc'){
