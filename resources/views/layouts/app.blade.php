@@ -172,7 +172,7 @@
         <p class="center-align">
             <i class="icofont icofont-heart-alt l-blue"></i>
 
-            Copyright © www.limanc.cn 版权所有. 京ICP备19049714号
+            Copyright © www.zsythink.net 版权所有. 京ICP备16062608号
         </p>
 
     </div>

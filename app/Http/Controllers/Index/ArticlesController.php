@@ -56,6 +56,7 @@ class ArticlesController extends Controller
      * @params int id 文章id
      * */
     public function blogDetail($id, Request $request){
+        //        echo \Redis::zScore('article','string:article_like:1');
         //获取当前文章内容
         $article = $this->articleService->getBlogDetail($id);
         $request->session()->flash('articleContent_'.$id, $article);//将数据闪存到session
@@ -94,5 +95,23 @@ class ArticlesController extends Controller
         $article = $request->session()->get('articleContent_'.$id);
         $content = $this->articleService->analysisMarkdown(isset($article->content)?$article->content:'');
         return view('blog_content',['content'=>$content]);
+    }
+    /**
+     * 文章点赞阅读
+     * @id  文章id
+     * @type 操作类型 like-点赞 read-阅读
+     * */
+    public function articleOperate(Request $request){
+        $inputs = $request->all();
+        $rules = [
+            'id' => 'required|numeric',
+            'type' =>'required|string',
+        ];
+        $validator = Validator::make($inputs,$rules,['参数有误']);
+        if($validator->fails()){
+            return ['message'=>$validator->errors()->all()[0],'code'=>40001];
+        }
+
+        $this->articleService->articleOperate($inputs['id'], $inputs['type']);
     }
 }

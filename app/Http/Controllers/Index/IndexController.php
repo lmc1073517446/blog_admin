@@ -20,6 +20,10 @@ class IndexController extends Controller
      * 首页
      * */
     public function index(){
+        //\Redis::zAdd('article', 2, 'ceshi');
+        //\Redis::zIncrby('article',1, 'string:article_like:1');
+        //echo \Redis::zScore('article','string:article_like:1');
+
         return view('index');
     }
 

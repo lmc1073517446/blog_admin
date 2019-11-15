@@ -56,4 +56,43 @@ class ArticleService
         return  $Parsedown->setBreaksEnabled(true)->text($content); # prints: <p>Hello <em>Parsedown</em>!</p>
     }
 
+    /**
+     * 文章操作
+     * @id 文章id
+     * @type  文章类型 like-点赞 read-阅读
+     * */
+    public function articleOperate($id, $type){
+        switch ($type)
+        {
+            case 'like':
+                $this->articleLike($id);
+            break;
+            case 'read':
+                $this->articleRead($id);
+            break;
+            default:
+                return ;
+        }
+    }
+
+    /**
+     * 文章操作-点赞
+     * @id 文章id
+     * */
+    public function articleLike($id){
+        //缓存中点赞量加1
+        \Redis::zIncrby('article',1, 'string:article_like:'.$id);
+        //队列中加入 数据库同步点赞量操作
+    }
+
+    /**
+     * 文章操作-阅读
+     * @id 文章id
+     * */
+    public function articleRead($id){
+        //缓存中点赞量加1
+        \Redis::zIncrby('article',1, 'string:article_read:'.$id);
+        //队列中加入 数据库同步阅读量操作
+    }
+
 }
