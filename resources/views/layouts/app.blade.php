@@ -172,7 +172,7 @@
         <p class="center-align">
             <i class="icofont icofont-heart-alt l-blue"></i>
 
-            Copyright © www.zsythink.net 版权所有. 京ICP备16062608号
+            Copyright © www.limanc.cn 版权所有. <a href="http://beian.miit.gov.cn" target="_blank">京ICP备16062608号</a>
         </p>
 
     </div>
